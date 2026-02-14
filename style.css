@@ -49,3 +49,20 @@ body, html {
   margin-top: 10px;
   font-size: 20px;
 }
+.slot-machine {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* większy odstęp między reelami */
+  margin: 40px 0;
+}
+
+.reel {
+  font-size: 100px; /* większe symbole */
+  width: 120px;     /* większe pole */
+  height: 120px;
+  line-height: 120px;
+  background: #222;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #ff0;
+  transition: transform 0.3s ease-in-out;
+}
