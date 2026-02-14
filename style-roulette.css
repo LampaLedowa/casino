@@ -1,27 +1,21 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body, html { font-family: Arial; background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); color:#fff; min-height:100vh; }
+body, html { margin:0; padding:0; font-family: Arial; background: linear-gradient(135deg,#1a1a1a,#3a3a3a); color:#fff; min-height:100vh; }
+.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; position:relative; }
 
-.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
-
-header h1 { color: gold; margin-bottom:10px; }
-.back-btn { color: gold; text-decoration:none; display:inline-block; margin-bottom:10px; }
+header h1 { color: gold; margin-bottom:20px; }
+.back-btn { color: gold; text-decoration:none; display:inline-block; margin-bottom:20px; }
 .back-btn:hover { color:#fff; text-shadow:0 0 10px gold; }
 
-.roulette-wrapper { width:400px; height:400px; margin:20px auto; position:relative; }
-#rouletteCanvas { border-radius:50%; box-shadow:0 0 30px gold; background: radial-gradient(circle at center, #222 0%, #111 100%); }
-#rouletteBall { position:absolute; width:20px; height:20px; background:#fff; border-radius:50%; box-shadow:0 0 15px #fff,0 0 25px gold; top:190px; left:190px; pointer-events:none; }
+.roulette-wrapper { position:relative; width:400px; height:400px; margin:0 auto 20px; }
+#rouletteCanvas { width:100%; height:100%; border-radius:50%; background:#111; }
+#rouletteBall { width:20px; height:20px; border-radius:50%; background:white; position:absolute; top:10px; left:190px; }
 
-.bet-options { margin-top:20px; }
-.bet-options p { font-size:18px; margin-bottom:10px; }
-.bet-options button { margin:5px; padding:10px 18px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background: linear-gradient(45deg,gold,orange); color:#fff; box-shadow:0 0 10px gold; transition: transform 0.2s, box-shadow 0.2s; }
-.bet-options button:hover { transform: scale(1.05); box-shadow:0 0 20px gold; }
+.bet-options { margin:15px 0; }
+.bet-btn { margin:5px; padding:8px 15px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background: linear-gradient(45deg,gold,orange); color:#fff; transition: transform 0.2s, box-shadow 0.2s; }
+.bet-btn:hover { transform:scale(1.05); box-shadow:0 0 15px gold; }
 
-.numbers-grid { display:grid; grid-template-columns:repeat(6,40px); grid-gap:5px; justify-content:center; margin-top:10px; }
-.numbers-grid button { padding:8px; font-size:14px; border-radius:5px; border:none; color:#fff; box-shadow:0 0 5px gold; cursor:pointer; transition: transform 0.2s, box-shadow 0.2s; }
-.numbers-grid button:hover { transform:scale(1.05); box-shadow:0 0 15px gold; }
-.numbers-grid button.red { background:#c00; }
-.numbers-grid button.black { background:#000; }
-.numbers-grid button.green { background:#0a5; }
+#numbersGrid { display:grid; grid-template-columns: repeat(12, 1fr); gap:5px; justify-items:center; margin:15px auto; max-width:400px; }
+.number-btn { padding:6px 10px; border-radius:5px; border:none; background:#222; color:#fff; cursor:pointer; transition: 0.2s; }
+.number-btn:hover { background:gold; color:#000; }
 
 #rouletteSpin { margin-top:15px; padding:12px 25px; font-size:18px; font-weight:bold; background: linear-gradient(45deg,gold,orange); border:none; border-radius:10px; cursor:pointer; box-shadow:0 0 15px gold; transition: transform 0.2s, box-shadow 0.2s; }
 #rouletteSpin:hover { transform:scale(1.05); box-shadow:0 0 25px gold; }
@@ -31,11 +25,4 @@ header h1 { color: gold; margin-bottom:10px; }
 .player-bar {
   position:absolute; top:15px; right:20px; font-size:18px; font-weight:bold;
   color:gold; background:rgba(0,0,0,0.6); padding:8px 12px; border-radius:12px; box-shadow:0 0 15px gold; z-index:100;
-}
-
-@media (max-width:600px){
-  .roulette-wrapper{width:300px;height:300px;}
-  .numbers-grid{grid-template-columns:repeat(6,30px);}
-  .bet-options button{padding:6px 12px;font-size:14px;}
-  #rouletteSpin{padding:10px 18px;font-size:16px;}
 }
