@@ -4,35 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slots 🎰</title>
+<link rel="stylesheet" href="style-global.css">
 <link rel="stylesheet" href="style-slots.css">
 </head>
 <body>
 
-<div class="casino-container">
-
-  <!-- Pasek gracza -->
+<header class="casino-header">
+  <div class="casino-menu">
+    <a href="index.html">🏠 Menu</a>
+    <a href="slots.html">🎰 Slots</a>
+    <a href="roulette.html">🎡 Ruletka</a>
+  </div>
   <div class="player-bar" id="playerBar">
     <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
   </div>
+</header>
 
-  <header>
-    <h1>Slots 🎰</h1>
-    <a href="index.html" class="back-btn">⬅ Powrót</a>
-  </header>
+<main>
+  <h1>Slots 🎰</h1>
+  <div class="slots-wrapper">
+    <div class="reel" id="reel1">🍒</div>
+    <div class="reel" id="reel2">🍋</div>
+    <div class="reel" id="reel3">🔔</div>
+  </div>
 
-  <main>
-    <div class="slots-wrapper">
-      <div class="reel" id="reel1">🍒</div>
-      <div class="reel" id="reel2">🍋</div>
-      <div class="reel" id="reel3">🔔</div>
-    </div>
+  <button id="slotsSpin">SPIN</button>
+  <p id="slotsResult"></p>
+</main>
 
-    <button id="slotsSpin">SPIN</button>
-    <p id="slotsResult"></p>
-  </main>
+<footer class="casino-footer">
+  <div class="social-icons">
+    <a href="https://discord.gg/twoj_link" target="_blank"><img src="assets/icons/discord.png" alt="Discord"></a>
+    <a href="https://instagram.com/twoj_profil" target="_blank"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+    <a href="https://facebook.com/twoj_profil" target="_blank"><img src="assets/icons/facebook.png" alt="Facebook"></a>
+    <a href="https://youtube.com/twoj_kanal" target="_blank"><img src="assets/icons/youtube.png" alt="YouTube"></a>
+  </div>
+  <p>© 2026 CoCoCasino. Hazard związany jest z ryzykiem, a udział w nielegalnych grach hazardowych jest niezgodny z polskim prawem.</p>
+</footer>
 
-</div>
-
+<script src="player.js"></script>
 <script src="slots.js"></script>
 </body>
 </html>
