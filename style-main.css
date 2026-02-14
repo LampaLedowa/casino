@@ -1,32 +1,67 @@
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
-body, html { font-family: Arial; background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); color:#fff; min-height: 100vh; }
+/* Wspólne dla wszystkich stron */
+body, html { margin:0; padding:0; font-family: Arial; color:#fff; min-height:100vh; }
 
-/* PASEK GRACZA W PRAWYM GÓRNYM ROGU */
-.player-bar {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: gold;
-  background: rgba(0,0,0,0.6);
-  padding: 8px 12px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px gold;
+.casino-header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.85);
+  padding: 15px 30px;
+  border-bottom: 2px solid gold;
+  box-shadow: 0 0 20px gold;
+  position: relative;
   z-index: 100;
 }
 
-/* KONTAINER */
-.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
+.casino-menu a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: gold;
+  font-weight: bold;
+  transition: 0.2s;
+}
 
-/* HEADER */
-header h1 { color: gold; margin-bottom:20px; }
+.casino-menu a:hover { color: #fff; text-shadow: 0 0 10px gold; }
 
-/* MENU GIER */
-.game-menu h2 { margin-bottom:20px; color: gold; }
-.game-icons { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; }
-.game-icons a { text-decoration:none; color:#fff; transition: transform 0.3s; }
-.game-icons a:hover { transform: scale(1.1); }
-.game-icons img { width:140px; height:140px; border-radius:15px; box-shadow:0 0 25px gold; }
-.game-icons p { margin-top:10px; font-size:22px; }
+.player-bar {
+  font-size: 16px;
+  font-weight: bold;
+  color: gold;
+  background: rgba(0,0,0,0.6);
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gold;
+}
+
+.casino-footer {
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  text-align: left;
+  padding: 15px 30px;
+  border-top: 2px solid gold;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.casino-footer .social-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.casino-footer .social-icons a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.casino-footer .social-icons a img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 5px gold);
+}
+
+.casino-footer p {
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 800px;
+}
