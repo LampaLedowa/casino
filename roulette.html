@@ -10,7 +10,6 @@
 
 <div class="casino-container">
 
-  <!-- Pasek gracza -->
   <div class="player-bar" id="playerBar">
     <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
   </div>
@@ -21,14 +20,11 @@
   </header>
 
   <main>
-
-    <!-- Koło ruletki -->
     <div class="roulette-wrapper">
       <canvas id="rouletteCanvas" width="400" height="400"></canvas>
       <div id="rouletteBall"></div>
     </div>
 
-    <!-- Opcje obstawiania kolorów -->
     <div class="bet-options">
       <p>Obstaw kolory:</p>
       <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
@@ -36,12 +32,10 @@
       <button class="bet-btn" data-bet="green">🟢 Zielone</button>
     </div>
 
-    <!-- Opcje obstawiania numerów -->
     <div class="numbers-grid" id="numbersGrid"></div>
 
     <button id="rouletteSpin">SPIN</button>
     <p id="rouletteResult"></p>
-
   </main>
 
 </div>
