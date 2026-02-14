@@ -4,42 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ruletka 🎡</title>
+<link rel="stylesheet" href="style-global.css">
 <link rel="stylesheet" href="style-roulette.css">
 </head>
 <body>
 
-<div class="casino-container">
-
+<header class="casino-header">
+  <div class="casino-menu">
+    <a href="index.html">🏠 Menu</a>
+    <a href="slots.html">🎰 Slots</a>
+    <a href="roulette.html">🎡 Ruletka</a>
+  </div>
   <div class="player-bar" id="playerBar">
     <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
   </div>
+</header>
 
-  <header>
-    <h1>Ruletka 🎡</h1>
-    <a href="index.html" class="back-btn">⬅ Powrót</a>
-  </header>
+<main>
+  <h1>Ruletka 🎡</h1>
+  <div class="roulette-wrapper">
+    <canvas id="rouletteCanvas" width="400" height="400"></canvas>
+    <div id="rouletteBall"></div>
+  </div>
 
-  <main>
-    <div class="roulette-wrapper">
-      <canvas id="rouletteCanvas" width="400" height="400"></canvas>
-      <div id="rouletteBall"></div>
-    </div>
+  <div class="bet-options">
+    <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
+    <button class="bet-btn" data-bet="black">⚫ Czarne</button>
+    <button class="bet-btn" data-bet="green">🟢 Zielone</button>
+  </div>
 
-    <div class="bet-options">
-      <p>Obstaw kolory:</p>
-      <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
-      <button class="bet-btn" data-bet="black">⚫ Czarne</button>
-      <button class="bet-btn" data-bet="green">🟢 Zielone</button>
-    </div>
+  <div class="numbers-grid" id="numbersGrid"></div>
 
-    <div class="numbers-grid" id="numbersGrid"></div>
+  <button id="rouletteSpin">SPIN</button>
+  <p id="rouletteResult"></p>
+</main>
 
-    <button id="rouletteSpin">SPIN</button>
-    <p id="rouletteResult"></p>
-  </main>
+<footer class="casino-footer">
+  <div class="social-icons">
+    <a href="https://discord.gg/twoj_link" target="_blank"><img src="assets/icons/discord.png" alt="Discord"></a>
+    <a href="https://instagram.com/twoj_profil" target="_blank"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+    <a href="https://facebook.com/twoj_profil" target="_blank"><img src="assets/icons/facebook.png" alt="Facebook"></a>
+    <a href="https://youtube.com/twoj_kanal" target="_blank"><img src="assets/icons/youtube.png" alt="YouTube"></a>
+  </div>
+  <p>© 2026 CoCoCasino. Hazard związany jest z ryzykiem, a udział w nielegalnych grach hazardowych jest niezgodny z polskim prawem.</p>
+</footer>
 
-</div>
-
+<script src="player.js"></script>
 <script src="roulette.js"></script>
 </body>
 </html>
