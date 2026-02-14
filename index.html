@@ -19,8 +19,8 @@
     <h1>TotalCasino 🎰</h1>
   </header>
 
+  <!-- Logowanie -->
   <main id="loginSection">
-    <!-- LOGOWANIE -->
     <div class="login-box">
       <h2>Logowanie</h2>
       <input type="text" id="playerNameInput" placeholder="Wpisz swoją nazwę">
@@ -28,15 +28,14 @@
     </div>
   </main>
 
+  <!-- Menu gry -->
   <main id="casinoMenu" style="display:none;">
-    <!-- PANEL WPŁAT -->
     <div class="deposit-box">
       <h2>Wpłać środki</h2>
       <input type="number" id="depositAmount" placeholder="Kwota">
       <button id="depositBtn">Wpłać</button>
     </div>
 
-    <!-- WYBÓR GRY -->
     <h2>Wybierz grę:</h2>
     <div class="game-icons">
       <a href="slots.html">
@@ -53,19 +52,28 @@
 </div>
 
 <script>
-// Zmienna gracza
-let player = { name: "", balance: 0 };
+let player = { name:"", balance:0 };
 
-// LOGOWANIE
-const loginBtn = document.getElementById("loginBtn");
-loginBtn.addEventListener("click", ()=>{
+// Sprawdzenie czy gracz jest już zalogowany
+if(localStorage.getItem("playerName")){
+  player.name = localStorage.getItem("playerName");
+  player.balance = parseInt(localStorage.getItem("playerBalance"));
+  document.getElementById("playerNameDisplay").textContent = player.name;
+  document.getElementById("playerBalance").textContent = player.balance;
+  document.getElementById("loginSection").style.display = "none";
+  document.getElementById("casinoMenu").style.display = "block";
+  document.getElementById("playerBar").style.display = "block";
+}
+
+// Logowanie
+document.getElementById("loginBtn").addEventListener("click", ()=>{
   const name = document.getElementById("playerNameInput").value.trim();
-  if(name === ""){
-    alert("Podaj nazwę gracza!");
-    return;
-  }
+  if(name === ""){ alert("Podaj nazwę gracza!"); return; }
   player.name = name;
-  player.balance = 1000; // startowe saldo
+  player.balance = 1000;
+
+  localStorage.setItem("playerName", player.name);
+  localStorage.setItem("playerBalance", player.balance);
 
   document.getElementById("playerNameDisplay").textContent = player.name;
   document.getElementById("playerBalance").textContent = player.balance;
@@ -75,20 +83,16 @@ loginBtn.addEventListener("click", ()=>{
   document.getElementById("playerBar").style.display = "block";
 });
 
-// WPŁATA
-const depositBtn = document.getElementById("depositBtn");
-depositBtn.addEventListener("click", ()=>{
+// Wpłata
+document.getElementById("depositBtn").addEventListener("click", ()=>{
   const amount = parseInt(document.getElementById("depositAmount").value);
-  if(isNaN(amount) || amount <= 0){
-    alert("Podaj poprawną kwotę!");
-    return;
-  }
+  if(isNaN(amount) || amount <=0){ alert("Podaj poprawną kwotę!"); return; }
   player.balance += amount;
+  localStorage.setItem("playerBalance", player.balance);
   document.getElementById("playerBalance").textContent = player.balance;
   document.getElementById("depositAmount").value = "";
-  alert(`Wpłacono $${amount} na konto`);
+  alert(`Wpłacono $${amount}`);
 });
 </script>
-
 </body>
 </html>
