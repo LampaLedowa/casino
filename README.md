@@ -3,34 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CocoCasino </title>
+  <title>CoCoCasino</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="casino-container">
     <header>
-      <h1>CocoCasino 🎰</h1>
+      <h1>CoCoCasino 🎰</h1>
     </header>
 
-    <main>
-      <div class="slot-machine">
-        <div class="reel" id="reel1">🍒</div>
-        <div class="reel" id="reel2">🍋</div>
-        <div class="reel" id="reel3">🔔</div>
+    <main class="game-menu">
+      <h2>Wybierz grę:</h2>
+      <div class="game-icons">
+        <a href="slots.html">
+          <img src="assets/images/slot-icon.png" alt="Slots">
+          <p>Slots</p>
+        </a>
+        <a href="roulette.html">
+          <img src="assets/images/roulette-icon.png" alt="Ruletka">
+          <p>Ruletka</p>
+        </a>
       </div>
-      <button id="spinBtn">SPIN</button>
-      <p id="result"></p>
     </main>
 
     <footer>
-      <p>© 2026 CocoCasino </p>
+      <p>© 2026 CoCoCasino </p>
     </footer>
   </div>
-
-  <!-- Dźwięki -->
-  <audio id="spinSound" src="assets/sounds/spin.mp3"></audio>
-  <audio id="winSound" src="assets/sounds/win.mp3"></audio>
-
-  <script src="script.js"></script>
 </body>
 </html>
