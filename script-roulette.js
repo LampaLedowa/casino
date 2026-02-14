@@ -9,7 +9,7 @@ const betBtns = document.querySelectorAll(".bet-btn");
 let balance = 1000;
 let currentBet = null;
 
-// Kolejność numerów w europejskiej ruletce
+// Europejska ruletka
 const numbers = [
 {num:0,color:'green'}, {num:32,color:'red'}, {num:15,color:'black'},
 {num:19,color:'red'}, {num:4,color:'black'}, {num:21,color:'red'},
@@ -42,7 +42,7 @@ function drawWheel(rotation=0){
     ctx.fill();
     ctx.strokeStyle="#fff";
     ctx.stroke();
-    
+
     // numerki
     const angle = start + arc/2;
     ctx.save();
@@ -100,5 +100,5 @@ spinBtn.addEventListener('click', ()=>{
   },20);
 });
 
-// Początkowe rysowanie koła
+// Początkowe rysowanie
 drawWheel();
