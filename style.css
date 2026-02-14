@@ -6,7 +6,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #fff;
   min-height: 100vh;
@@ -29,7 +29,7 @@ header h1 {
   margin-bottom: 10px;
 }
 
-/* ===== PRZYCISK POWROTU ===== */
+/* ===== BACK BUTTON ===== */
 .back-btn {
   display: inline-block;
   margin-bottom: 20px;
@@ -88,7 +88,6 @@ header h1 {
   flex-wrap: wrap;
 }
 
-/* ===== POJEDYNCZY SLOT ===== */
 .reel {
   font-size: 100px;
   width: 120px;
@@ -101,7 +100,6 @@ header h1 {
   user-select: none;
 }
 
-/* 🔥 NEON HOVER */
 .reel:hover {
   box-shadow: 0 0 50px gold, 0 0 20px red, 0 0 20px blue;
   transform: scale(1.1);
@@ -118,7 +116,7 @@ header h1 {
   100% { transform: rotateX(360deg); }
 }
 
-/* ===== PRZYCISK SPIN ===== */
+/* ===== BUTTON ===== */
 button {
   padding: 14px 28px;
   font-size: 22px;
@@ -140,7 +138,7 @@ button:active {
   transform: scale(0.95);
 }
 
-/* ===== TEKST WYNIKU ===== */
+/* ===== RESULT TEXT ===== */
 #result, #rouletteResult {
   font-size: 26px;
   margin-top: 15px;
@@ -148,21 +146,9 @@ button:active {
   min-height: 32px;
 }
 
-/* ===== RESPONSYWNOŚĆ ===== */
-@media (max-width: 600px) {
-  .reel {
-    font-size: 70px;
-    width: 90px;
-    height: 90px;
-    line-height: 90px;
-  }
-
-  .game-icons img {
-    width: 110px;
-    height: 110px;
-  }
-}
-/* ===== ULTRA RULETKA ===== */
+/* ================================================= */
+/* ================= ULTRA RULETKA ================= */
+/* ================================================= */
 
 .roulette-wrapper {
   display: flex;
@@ -218,8 +204,7 @@ button:active {
   transition: transform 4s cubic-bezier(.17,.67,.83,.67);
 }
 
-/* kulka */
-
+/* ===== KULKA ===== */
 .roulette-ball {
   position: absolute;
   top: -12px;
@@ -231,4 +216,24 @@ button:active {
   transform-origin: 50% 140px;
   transition: transform 4s cubic-bezier(.17,.67,.83,.67);
   box-shadow: 0 0 10px white;
+}
+
+/* ===== RESPONSYWNOŚĆ ===== */
+@media (max-width: 600px) {
+  .reel {
+    font-size: 70px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+  }
+
+  .game-icons img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .roulette-wheel {
+    width: 200px;
+    height: 200px;
+  }
 }
