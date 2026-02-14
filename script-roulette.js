@@ -26,7 +26,7 @@ const numbers = [
 {num:26,color:'black'}
 ];
 
-// Rysowanie koła z numerami
+// Rysowanie koła
 function drawWheel(rotation=0){
   const radius = 180;
   const center = 200;
@@ -36,7 +36,6 @@ function drawWheel(rotation=0){
   numbers.forEach((n,i)=>{
     const start = i*arc + rotation;
     const end = start+arc;
-    // kolor segmentu
     ctx.beginPath();
     ctx.moveTo(center,center);
     ctx.arc(center,center,radius,start,end);
@@ -45,7 +44,6 @@ function drawWheel(rotation=0){
     ctx.strokeStyle="#fff";
     ctx.stroke();
 
-    // numer w środku segmentu
     const angle = start + arc/2;
     ctx.save();
     ctx.translate(center,center);
@@ -72,7 +70,7 @@ betBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>currentBet=btn.dataset.bet);
 });
 
-// Animacja SPIN
+// SPIN
 spinBtn.addEventListener('click', ()=>{
   if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
 
@@ -90,12 +88,10 @@ spinBtn.addEventListener('click', ()=>{
     if(speed>0){
       requestAnimationFrame(animate);
     } else {
-      // ustawienie dokładnie na numer
       const arc = (2*Math.PI)/numbers.length;
       rotation = 2*Math.PI - winnerIndex*arc;
       drawWheel(rotation);
 
-      // wynik
       let win=false;
       if(currentBet==='red' && winner.color==='red') win=true;
       else if(currentBet==='black' && winner.color==='black') win=true;
