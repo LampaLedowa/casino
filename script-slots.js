@@ -1,6 +1,7 @@
 const spinBtn = document.getElementById("slotsSpin");
 const result = document.getElementById("slotsResult");
-const balanceEl = document.getElementById("balance");
+const balanceEl = document.getElementById("playerBalance");
+const nameEl = document.getElementById("playerNameDisplay");
 
 const reels = [
   document.getElementById("reel1"),
@@ -8,28 +9,27 @@ const reels = [
   document.getElementById("reel3")
 ];
 
-let balance = 1000;
 const symbols = ["🍒","🍋","🔔","💎","🍉","⭐"];
 
-spinBtn.addEventListener("click", () => {
-  if(balance < 50){
-    alert("Nie masz wystarczająco środków!");
-    return;
-  }
+// Pobranie danych gracza z localStorage
+let player = {
+  name: localStorage.getItem("playerName") || "Gracz",
+  balance: parseInt(localStorage.getItem("playerBalance")) || 1000
+};
+balanceEl.textContent = player.balance;
+nameEl.textContent = player.name;
 
-  balance -= 50;
-  balanceEl.textContent = balance;
-  result.textContent = "";
+spinBtn.addEventListener("click", ()=>{
+  if(player.balance < 50){ alert("Nie masz wystarczających środków!"); return; }
+  player.balance -= 50;
+  balanceEl.textContent = player.balance;
 
-  // Losowe symbole końcowe
   const finalSymbols = [];
-  for(let i=0;i<3;i++){
-    finalSymbols.push(symbols[Math.floor(Math.random()*symbols.length)]);
-  }
+  for(let i=0;i<3;i++){ finalSymbols.push(symbols[Math.floor(Math.random()*symbols.length)]); }
 
   let frame = 0;
-  const maxFrames = 50; // ilość klatek animacji
-  const delays = [0, 5, 10]; // opóźnienia dla kolejnych bębnów
+  const maxFrames = 50;
+  const delays = [0,5,10];
 
   function animate(){
     frame++;
@@ -46,19 +46,18 @@ spinBtn.addEventListener("click", () => {
     if(frame < maxFrames){
       requestAnimationFrame(animate);
     } else {
-      // Sprawdzenie wyniku
       if(finalSymbols[0]===finalSymbols[1] && finalSymbols[1]===finalSymbols[2]){
         result.textContent = `WYGRAŁEŚ! Symbol: ${finalSymbols[0]}`;
-        balance += 500;
+        player.balance += 500;
       } else if(finalSymbols[0]===finalSymbols[1] || finalSymbols[1]===finalSymbols[2] || finalSymbols[0]===finalSymbols[2]){
         result.textContent = `Częściowa wygrana!`;
-        balance += 150;
+        player.balance += 150;
       } else {
         result.textContent = `PRZEGRAŁEŚ!`;
       }
-      balanceEl.textContent = balance;
+      balanceEl.textContent = player.balance;
+      localStorage.setItem("playerBalance", player.balance);
     }
   }
-
   animate();
 });
