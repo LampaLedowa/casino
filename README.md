@@ -11,7 +11,7 @@
 <body>
   <header>
     <h1>🎰 Mini Kasyno ULTRA</h1>
-    <p>FAKE MONEY • tylko zabawa</p>
+    <p> tylko zabawa</p>
     <div class="money">Saldo: $<span id="balance">1000</span></div>
 
     <div class="money-controls">
