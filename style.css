@@ -162,22 +162,73 @@ button:active {
     height: 110px;
   }
 }
-/* ===== RULETKA ===== */
+/* ===== ULTRA RULETKA ===== */
 
 .roulette-wrapper {
   display: flex;
   justify-content: center;
-  margin: 40px 0;
+  margin: 50px 0;
 }
 
 .roulette-wheel {
-  font-size: 120px;
-  width: 160px;
-  height: 160px;
-  line-height: 160px;
+  position: relative;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, #111, #000);
-  box-shadow: 0 0 40px red, inset 0 0 30px gold;
-  transition: transform 3s cubic-bezier(.17,.67,.83,.67);
-  user-select: none;
+  background:
+    conic-gradient(
+      #0a5 0deg 10deg,
+      #000 10deg 20deg,
+      #c00 20deg 30deg,
+      #000 30deg 40deg,
+      #c00 40deg 50deg,
+      #000 50deg 60deg,
+      #c00 60deg 70deg,
+      #000 70deg 80deg,
+      #c00 80deg 90deg,
+      #000 90deg 100deg,
+      #c00 100deg 110deg,
+      #000 110deg 120deg,
+      #c00 120deg 130deg,
+      #000 130deg 140deg,
+      #c00 140deg 150deg,
+      #000 150deg 160deg,
+      #c00 160deg 170deg,
+      #000 170deg 180deg,
+      #c00 180deg 190deg,
+      #000 190deg 200deg,
+      #c00 200deg 210deg,
+      #000 210deg 220deg,
+      #c00 220deg 230deg,
+      #000 230deg 240deg,
+      #c00 240deg 250deg,
+      #000 250deg 260deg,
+      #c00 260deg 270deg,
+      #000 270deg 280deg,
+      #c00 280deg 290deg,
+      #000 290deg 300deg,
+      #c00 300deg 310deg,
+      #000 310deg 320deg,
+      #c00 320deg 330deg,
+      #000 330deg 340deg,
+      #c00 340deg 350deg,
+      #000 350deg 360deg
+    );
+  box-shadow: 0 0 60px red, inset 0 0 40px gold;
+  transition: transform 4s cubic-bezier(.17,.67,.83,.67);
+}
+
+/* kulka */
+
+.roulette-ball {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transform-origin: 50% 140px;
+  transition: transform 4s cubic-bezier(.17,.67,.83,.67);
+  box-shadow: 0 0 10px white;
 }
