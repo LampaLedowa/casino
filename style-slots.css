@@ -1,7 +1,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body, html { font-family: Arial; background: linear-gradient(135deg,#1a1a1a,#3a3a3a,#111); color:#fff; min-height:100vh; }
 
-.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
+.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; position:relative; }
 
 header h1 { color: gold; margin-bottom:10px; }
 .back-btn { color: gold; text-decoration:none; display:inline-block; margin-bottom:20px; }
