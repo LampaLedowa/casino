@@ -84,7 +84,6 @@ spinBtn.addEventListener('click', ()=>{
     rotation += speed;
     speed -= deceleration;
 
-    // kula
     const radius = 160;
     const center = 200;
     ballAngle -= ballSpeed;
