@@ -1,0 +1,40 @@
+*{box-sizing:border-box;margin:0;padding:0}
+  padding:12px 22px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:#512;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button:hover{transform:scale(1.05)}
+
+.result{margin-top:14px;font-size:1.3rem;font-weight:600}
+
+input{
+  padding:9px;
+  border-radius:10px;
+  border:1px solid #374151;
+  background:#020617;
+  color:#fff;
+  width:130px;
+  text-align:center;
+}
+
+.money{font-size:1.5rem;margin-top:8px;color:#22c55e;font-weight:700}
+.money-controls,.bet-controls{margin-top:10px}
+
+footer{margin-top:30px;padding:20px;color:#9ca3af;border-top:1px solid #1f2937}
+
+.wheel{
+  font-size:60px;
+  margin:10px 0;
+  transition:transform 1s ease-out;
+}
+
+.slots{
+  font-size:40px;
+  letter-spacing:8px;
+  margin:10px 0;
+}
