@@ -1,143 +1,52 @@
 /* RESET */
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body, html {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color: #fff;
-  min-height: 100vh;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { font-family: Arial; background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); color:#fff; min-height:100vh; }
 
 /* KONTAINER */
-.casino-container {
-  max-width: 900px;
-  margin: 20px auto;
-  background: rgba(0,0,0,0.85);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 0 50px gold;
-}
+.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
 
 /* HEADER */
-header h1 {
-  color: gold;
-  margin-bottom: 10px;
-}
-header p {
-  font-size: 18px;
-  color: #ffd700;
-  margin-top: 5px;
-}
-.back-btn {
-  color: gold;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-.back-btn:hover {
-  color: #fff;
-  text-shadow: 0 0 10px gold;
-}
+header h1 { color: gold; margin-bottom:10px; }
+.back-btn { color: gold; text-decoration:none; display:inline-block; margin-bottom:10px; }
+.back-btn:hover { color:#fff; text-shadow:0 0 10px gold; }
+
+/* MENU GIER */
+.game-menu h2 { margin-bottom:20px; color: gold; }
+.game-icons { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; }
+.game-icons a { text-decoration:none; color:#fff; transition: transform 0.3s; }
+.game-icons a:hover { transform: scale(1.1); }
+.game-icons img { width:140px; height:140px; border-radius:15px; box-shadow:0 0 25px gold; }
+.game-icons p { margin-top:10px; font-size:22px; }
 
 /* RULETKA */
-.roulette-wrapper {
-  width: 400px;
-  height: 400px;
-  margin: 20px auto;
-  position: relative;
-}
-#rouletteCanvas {
-  border-radius: 50%;
-  background: #222;
-  box-shadow: 0 0 30px gold;
-}
+.roulette-wrapper { width:400px; height:400px; margin:20px auto; position: relative; }
+#rouletteCanvas { border-radius:50%; background:#222; box-shadow:0 0 30px gold; }
 
 /* STOŁ OBSTAWIANIA KOLORÓW */
-.bet-options {
-  margin-top: 20px;
-}
-.bet-options p {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.bet-options button {
-  margin: 5px;
-  padding: 10px 18px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: linear-gradient(45deg, gold, orange);
-  color: #fff;
-  box-shadow: 0 0 10px gold;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.bet-options button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px gold;
-}
+.bet-options { margin-top:20px; }
+.bet-options p { font-size:18px; margin-bottom:10px; }
+.bet-options button { margin:5px; padding:10px 18px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background: linear-gradient(45deg,gold,orange); color:#fff; box-shadow:0 0 10px gold; transition: transform 0.2s, box-shadow 0.2s; }
+.bet-options button:hover { transform: scale(1.05); box-shadow:0 0 20px gold; }
 
 /* STOŁ OBSTAWIANIA NUMERÓW */
-.numbers-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 40px);
-  grid-gap: 5px;
-  justify-content: center;
-  margin-top: 10px;
-}
-.numbers-grid button {
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-  box-shadow: 0 0 5px gold;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.numbers-grid button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px gold;
-}
-.numbers-grid button.red { background: #c00; }
-.numbers-grid button.black { background: #000; }
-.numbers-grid button.green { background: #0a5; }
+.numbers-grid { display:grid; grid-template-columns:repeat(6,40px); grid-gap:5px; justify-content:center; margin-top:10px; }
+.numbers-grid button { padding:8px; font-size:14px; border-radius:5px; border:none; color:#fff; box-shadow:0 0 5px gold; cursor:pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.numbers-grid button:hover { transform:scale(1.05); box-shadow:0 0 15px gold; }
+.numbers-grid button.red { background:#c00; }
+.numbers-grid button.black { background:#000; }
+.numbers-grid button.green { background:#0a5; }
 
-/* PRZYCISK SPIN */
-#rouletteSpin {
-  margin-top: 15px;
-  padding: 12px 25px;
-  font-size: 18px;
-  font-weight: bold;
-  background: linear-gradient(45deg, gold, orange);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 15px gold;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-#rouletteSpin:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px gold;
-}
+/* SPIN */
+#rouletteSpin { margin-top:15px; padding:12px 25px; font-size:18px; font-weight:bold; background: linear-gradient(45deg,gold,orange); border:none; border-radius:10px; cursor:pointer; box-shadow:0 0 15px gold; transition: transform 0.2s, box-shadow 0.2s; }
+#rouletteSpin:hover { transform:scale(1.05); box-shadow:0 0 25px gold; }
 
 /* WYNIK */
-#rouletteResult {
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 0 0 8px gold;
-}
+#rouletteResult { margin-top:15px; font-size:20px; font-weight:bold; text-shadow:0 0 8px gold; }
 
 /* RESPONSYWNOŚĆ */
 @media (max-width:600px){
-  .roulette-wrapper { width: 300px; height: 300px; }
-  .numbers-grid { grid-template-columns: repeat(6, 30px); }
-  .bet-options button { padding: 6px 12px; font-size: 14px; }
-  #rouletteSpin { padding: 10px 18px; font-size: 16px; }
+  .roulette-wrapper{width:300px;height:300px;}
+  .numbers-grid{grid-template-columns:repeat(6,30px);}
+  .bet-options button{padding:6px 12px;font-size:14px;}
+  #rouletteSpin{padding:10px 18px;font-size:16px;}
 }
