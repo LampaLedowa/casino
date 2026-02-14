@@ -7,43 +7,37 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="casino-container">
 
-  <header>
-    <h1>Ruletka 🎡</h1>
-    <a href="index.html" class="back-btn">⬅ Powrót</a>
-    <p>Saldo: $<span id="balance">1000</span></p>
-  </header>
+<header>
+  <h1>Ruletka 🎡</h1>
+  <a href="index.html" class="back-btn">⬅ Powrót</a>
+  <p>Saldo: $<span id="balance">1000</span></p>
+</header>
 
-  <main>
+<main>
+  <!-- KOŁO RULETKI -->
+  <div class="roulette-wrapper">
+    <canvas id="rouletteCanvas" width="400" height="400"></canvas>
+  </div>
 
-    <!-- KOŁO RULETKI -->
-    <div class="roulette-wrapper">
-      <canvas id="rouletteCanvas" width="400" height="400"></canvas>
-      <div id="ballIndicator"></div>
-    </div>
+  <!-- STOŁ OBSTAWIANIA KOLORÓW -->
+  <div class="bet-options">
+    <p>Obstaw kolory:</p>
+    <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
+    <button class="bet-btn" data-bet="black">⚫ Czarne</button>
+    <button class="bet-btn" data-bet="green">🟢 Zielone</button>
+  </div>
 
-    <!-- STOŁ OBSTAWIANIA KOLORÓW -->
-    <div class="bet-options">
-      <p>Obstaw kolory:</p>
-      <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
-      <button class="bet-btn" data-bet="black">⚫ Czarne</button>
-      <button class="bet-btn" data-bet="green">🟢 Zielone</button>
-    </div>
+  <!-- STOŁ OBSTAWIANIA NUMERÓW -->
+  <div class="numbers-grid" id="numbersGrid"></div>
 
-    <!-- STOŁ OBSTAWIANIA NUMERÓW -->
-    <div class="numbers-grid" id="numbersGrid"></div>
+  <!-- SPIN -->
+  <button id="rouletteSpin">SPIN</button>
+  <p id="rouletteResult"></p>
+</main>
 
-    <!-- PRZYCISK SPIN -->
-    <button id="rouletteSpin">SPIN</button>
-
-    <!-- WYNIK -->
-    <p id="rouletteResult"></p>
-
-  </main>
 </div>
-
 <script src="roulette.js"></script>
 </body>
 </html>
