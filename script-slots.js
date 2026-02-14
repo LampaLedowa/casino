@@ -9,33 +9,56 @@ const reels = [
 ];
 
 let balance = 1000;
-
 const symbols = ["🍒","🍋","🔔","💎","🍉","⭐"];
 
 spinBtn.addEventListener("click", () => {
-  balance -= 50;
-  balanceEl.textContent = balance;
-
-  let stops = [];
-  reels.forEach((reel)=>{
-    let spins = 10 + Math.floor(Math.random()*10);
-    let symbol = null;
-    for(let j=0;j<spins;j++){
-      symbol = symbols[Math.floor(Math.random()*symbols.length)];
-      reel.textContent = symbol;
-    }
-    stops.push(symbol);
-  });
-
-  if(stops[0]===stops[1] && stops[1]===stops[2]){
-    result.textContent = `WYGRAŁEŚ! Symbol: ${stops[0]}`;
-    balance += 500;
-  } else if(stops[0]===stops[1] || stops[1]===stops[2] || stops[0]===stops[2]){
-    result.textContent = `Częściowa wygrana!`;
-    balance += 150;
-  } else {
-    result.textContent = `PRZEGRAŁEŚ!`;
+  if(balance < 50){
+    alert("Nie masz wystarczająco środków!");
+    return;
   }
 
+  balance -= 50;
   balanceEl.textContent = balance;
+  result.textContent = "";
+
+  // Losowe symbole końcowe
+  const finalSymbols = [];
+  for(let i=0;i<3;i++){
+    finalSymbols.push(symbols[Math.floor(Math.random()*symbols.length)]);
+  }
+
+  let frame = 0;
+  const maxFrames = 50; // ilość klatek animacji
+  const delays = [0, 5, 10]; // opóźnienia dla kolejnych bębnów
+
+  function animate(){
+    frame++;
+    for(let i=0;i<3;i++){
+      if(frame > delays[i]){
+        if(frame < maxFrames){
+          reels[i].textContent = symbols[Math.floor(Math.random()*symbols.length)];
+        } else {
+          reels[i].textContent = finalSymbols[i];
+        }
+      }
+    }
+
+    if(frame < maxFrames){
+      requestAnimationFrame(animate);
+    } else {
+      // Sprawdzenie wyniku
+      if(finalSymbols[0]===finalSymbols[1] && finalSymbols[1]===finalSymbols[2]){
+        result.textContent = `WYGRAŁEŚ! Symbol: ${finalSymbols[0]}`;
+        balance += 500;
+      } else if(finalSymbols[0]===finalSymbols[1] || finalSymbols[1]===finalSymbols[2] || finalSymbols[0]===finalSymbols[2]){
+        result.textContent = `Częściowa wygrana!`;
+        balance += 150;
+      } else {
+        result.textContent = `PRZEGRAŁEŚ!`;
+      }
+      balanceEl.textContent = balance;
+    }
+  }
+
+  animate();
 });
