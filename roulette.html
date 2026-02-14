@@ -7,18 +7,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div class="casino-container">
+
     <header>
       <h1>Ruletka 🎡</h1>
       <a href="index.html" class="back-btn">⬅ Powrót</a>
     </header>
 
     <main>
-      <p>Tu będzie Twoja ruletka. Można kliknąć “SPIN” i wygenerować losowy numer 0-36.</p>
+
+      <!-- KOŁO RULETKI -->
+      <div class="roulette-wrapper">
+        <div class="roulette-wheel" id="wheel">🎡</div>
+      </div>
+
       <button id="rouletteSpin">SPIN</button>
       <p id="rouletteResult"></p>
+
     </main>
+
   </div>
+
+  <audio id="rouletteSound" src="assets/sounds/spin.mp3"></audio>
 
   <script src="script-roulette.js"></script>
 </body>
