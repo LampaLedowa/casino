@@ -1,231 +1,31 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎰 Mini Kasyno</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: #e5e7eb;
-      text-align: center;
-    }
-    header {
-      background: #111827;
-      padding: 20px;
-      border-bottom: 1px solid #1f2937;
-    }
-    h1 { font-size: 2.2rem; }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 15px;
-      display: grid;
-      gap: 20px;
-    }
-    .card {
-      background: #111827;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    }
-    button {
-      margin-top: 12px;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 10px;
-      background: #2563eb;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    button:hover { background: #1d4ed8; }
-    .result { margin-top: 12px; font-size: 1.2rem; }
-    input {
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #374151;
-      background: #020617;
-      color: white;
-      margin-top: 8px;
-      width: 120px;
-      text-align: center;
-    }
-    footer {
-      margin-top: 30px;
-      padding: 20px;
-      color: #9ca3af;
-      border-top: 1px solid #1f2937;
-    }
-    .money {
-      font-size: 1.4rem;
-      margin-top: 6px;
-      color: #22c55e;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TotalCasino Clone</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>🎰 Mini Kasyno</h1>
-    <p>FAKE MONEY • tylko zabawa</p>
-    <div class="money">Saldo: $<span id="balance">1000</span></div>
-    <div>
-      <input type="number" id="addMoneyInput" placeholder="Dodaj $" />
-      <button onclick="addMoney()">Dodaj kasę</button>
-    </div>
-  </header>
+  <div class="casino-container">
+    <header>
+      <h1>TotalCasino Clone 🎰</h1>
+    </header>
 
-  <main class="container">
+    <main>
+      <div class="slot-machine">
+        <div class="reel" id="reel1">🍒</div>
+        <div class="reel" id="reel2">🍋</div>
+        <div class="reel" id="reel3">🔔</div>
+      </div>
+      <button id="spinBtn">SPIN</button>
+      <p id="result"></p>
+    </main>
 
-    <!-- ROULETTE -->
-    <section class="card">
-      <h2>🎡 Ruletka</h2>
-      <p>Zakład: $100</p>
-      <button onclick="spinRoulette()">Zakręć</button>
-      <div id="rouletteResult" class="result"></div>
-    </section>
-
-    <!-- POKER -->
-    <section class="card">
-      <h2>🃏 Poker (losowa karta)</h2>
-      <p>Zakład: $100 • Traf asa = wygrana x3</p>
-      <button onclick="drawCard()">Dobierz kartę</button>
-      <div id="pokerResult" class="result"></div>
-    </section>
-
-    <!-- SLOTS -->
-    <section class="card">
-      <h2>🎰 Sloty</h2>
-      <p>Zakład: $100 • 3 takie same = x5</p>
-      <button onclick="spinSlots()">Kręć sloty</button>
-      <div id="slotsResult" class="result"></div>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>© 2026 Mini Kasyno • Fake money</p>
-  </footer>
-
-  <script>
-    let balance = 1000;
-    const bet = 100;
-
-    function updateBalance() {
-      document.getElementById("balance").textContent = balance;
-    }
-
-    function addMoney() {
-      const val = Number(document.getElementById("addMoneyInput").value);
-      if (!isNaN(val) && val > 0) {
-        balance += val;
-        updateBalance();
-      }
-    }
-
-    function canPlay() {
-      if (balance < bet) {
-        alert("Brak kasy 😢 Dodaj fake money!");
-        return false;
-      }
-      balance -= bet;
-      updateBalance();
-      return true;
-    }
-
-    // ROULETTE
-    function spinRoulette() {
-      if (!canPlay()) return;
-      const number = Math.floor(Math.random() * 37);
-      let win = false;
-      if (number === 7) { // lucky number
-        balance += bet * 10;
-        win = true;
-      }
-      updateBalance();
-      document.getElementById("rouletteResult").textContent =
-        "Wylosowano: " + number + (win ? " 🎉 JACKPOT!" : "");
-    }
-
-    // POKER
-    function drawCard() {
-      if (!canPlay()) return;
-      const cards = ["A", "K", "Q", "J", "10", "9", "8", "7"];
-      const card = cards[Math.floor(Math.random() * cards.length)];
-      let text = "Karta: " + card;
-      if (card === "A") {
-        balance += bet * 3;
-        text = "🔥 Trafiłeś ASA!";
-      }
-      updateBalance();
-      document.getElementById("pokerResult").textContent = text;
-    }
-
-    // SLOTS
-    function spinSlots() {
-      if (!canPlay()) return;
-      const symbols = ["🍒", "🍋", "🔔", "⭐", "💎"];
-      const s1 = symbols[Math.floor(Math.random() * symbols.length)];
-      const s2 = symbols[Math.floor(Math.random() * symbols.length)];
-      const s3 = symbols[Math.floor(Math.random() * symbols.length)];
-
-      let text = `${s1} ${s2} ${s3}`;
-      if (s1 === s2 && s2 === s3) {
-        balance += bet * 5;
-        text += " — 🎉 WYGRANA!";
-      }
-      updateBalance();
-      document.getElementById("slotsResult").textContent = text;
-    }
-  </script>
-</body>
-</html>
- 
-</div>
-
-    <div class="bet-controls">
-      <p>🎯 Twój zakład:</p>
-      <input type="number" id="betInput" value="100" />
-    </div>
-
-    <div class="xp">⭐ Poziom: <span id="level">1</span> | EXP: <span id="xp">0</span></div>
-  </header>
-
-  <main class="container">
-
-    <section class="card">
-      <h2>🎡 Ruletka</h2>
-      <div class="wheel" id="wheel">🎡</div>
-      <button onclick="spinRoulette()">Zakręć</button>
-      <div id="rouletteResult" class="result"></div>
-    </section>
-
-    <section class="card">
-      <h2>🃏 Poker (5 kart)</h2>
-      <button onclick="playPoker()">Rozdaj</button>
-      <div id="pokerResult" class="result"></div>
-    </section>
-
-    <section class="card">
-      <h2>🎰 Sloty</h2>
-      <div class="slots" id="slotsAnim">❔ ❔ ❔</div>
-      <button onclick="spinSlots()">Kręć sloty</button>
-      <div id="slotsResult" class="result"></div>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>© 2026 Mini Kasyno ULTRA PRO • Fake money</p>
-  </footer>
-
-  <audio id="winSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
-  <audio id="spinSound" src="https://actions.google.com/sounds/v1/casino/slot_machine.ogg"></audio>
-
+    <footer>
+      <p>© 2026 TotalCasino Clone</p>
+    </footer>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
