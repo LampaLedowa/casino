@@ -1,0 +1,17 @@
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { font-family: Arial; background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); color:#fff; min-height: 100vh; }
+
+/* KONTAINER */
+.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
+
+/* HEADER */
+header h1 { color: gold; margin-bottom:20px; }
+
+/* MENU GIER */
+.game-menu h2 { margin-bottom:20px; color: gold; }
+.game-icons { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; }
+.game-icons a { text-decoration:none; color:#fff; transition: transform 0.3s; }
+.game-icons a:hover { transform: scale(1.1); }
+.game-icons img { width:140px; height:140px; border-radius:15px; box-shadow:0 0 25px gold; }
+.game-icons p { margin-top:10px; font-size:22px; }
