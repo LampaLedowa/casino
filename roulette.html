@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruletka Realistyczna</title>
+<title>Ruletka 🎡</title>
 <link rel="stylesheet" href="style-roulette.css">
 </head>
 <body>
 
 <div class="casino-container">
 
+  <!-- Pasek gracza -->
   <div class="player-bar" id="playerBar">
     <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
   </div>
@@ -21,11 +22,13 @@
 
   <main>
 
+    <!-- Koło ruletki -->
     <div class="roulette-wrapper">
       <canvas id="rouletteCanvas" width="400" height="400"></canvas>
       <div id="rouletteBall"></div>
     </div>
 
+    <!-- Opcje obstawiania kolorów -->
     <div class="bet-options">
       <p>Obstaw kolory:</p>
       <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
@@ -33,6 +36,7 @@
       <button class="bet-btn" data-bet="green">🟢 Zielone</button>
     </div>
 
+    <!-- Opcje obstawiania numerów -->
     <div class="numbers-grid" id="numbersGrid"></div>
 
     <button id="rouletteSpin">SPIN</button>
@@ -45,4 +49,3 @@
 <script src="roulette.js"></script>
 </body>
 </html>
-
