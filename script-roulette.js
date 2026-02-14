@@ -5,12 +5,11 @@ const result = document.getElementById("rouletteResult");
 const balanceEl = document.getElementById("balance");
 const numbersGrid = document.getElementById("numbersGrid");
 const betBtns = document.querySelectorAll(".bet-btn");
-const ballIndicator = document.getElementById("ballIndicator");
 
 let balance = 1000;
 let currentBet = null;
 
-// Europejska ruletka
+// Kolejność europejskiej ruletki
 const numbers = [
 {num:0,color:'green'}, {num:32,color:'red'}, {num:15,color:'black'},
 {num:19,color:'red'}, {num:4,color:'black'}, {num:21,color:'red'},
@@ -27,7 +26,7 @@ const numbers = [
 {num:26,color:'black'}
 ];
 
-// Rysowanie koła
+// Rysowanie koła z numerami
 function drawWheel(rotation=0){
   const radius = 180;
   const center = 200;
@@ -37,8 +36,7 @@ function drawWheel(rotation=0){
   numbers.forEach((n,i)=>{
     const start = i*arc + rotation;
     const end = start+arc;
-
-    // sekcje kolorów
+    // kolor segmentu
     ctx.beginPath();
     ctx.moveTo(center,center);
     ctx.arc(center,center,radius,start,end);
@@ -47,15 +45,15 @@ function drawWheel(rotation=0){
     ctx.strokeStyle="#fff";
     ctx.stroke();
 
-    // numerki
+    // numer w środku segmentu
     const angle = start + arc/2;
     ctx.save();
     ctx.translate(center,center);
     ctx.rotate(angle);
     ctx.textAlign="right";
     ctx.fillStyle="#fff";
-    ctx.font="14px Arial";
-    ctx.fillText(n.num,radius-10,5);
+    ctx.font="16px Arial";
+    ctx.fillText(n.num,radius-20,5);
     ctx.restore();
   });
 }
@@ -74,7 +72,7 @@ betBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>currentBet=btn.dataset.bet);
 });
 
-// Spin z kulką
+// Animacja SPIN
 spinBtn.addEventListener('click', ()=>{
   if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
 
@@ -82,34 +80,20 @@ spinBtn.addEventListener('click', ()=>{
   const winner = numbers[winnerIndex];
 
   let rotation = 0;
-  let ballAngle = 0;
-  const steps = 120;
-  let count=0;
+  let speed = 0.3 + Math.random()*0.3;
+  const deceleration = 0.003 + Math.random()*0.002;
 
-  const interval = setInterval(()=>{
-    rotation += 0.05 + 0.02*count; // obrót koła
-    ballAngle += 0.1 + 0.03*count; // kula porusza się szybciej
+  const animate = ()=>{
     drawWheel(rotation);
-
-    // pozycja kulki
-    const center = 200;
-    const radius = 160;
-    const x = center + Math.cos(-ballAngle + Math.PI/2) * radius;
-    const y = center + Math.sin(-ballAngle + Math.PI/2) * radius;
-    ballIndicator.style.left = x + 'px';
-    ballIndicator.style.top = y + 'px';
-
-    count++;
-    if(count>steps){
-      clearInterval(interval);
-
-      // ustawienie kulki na wylosowany numer
+    rotation += speed;
+    speed -= deceleration;
+    if(speed>0){
+      requestAnimationFrame(animate);
+    } else {
+      // ustawienie dokładnie na numer
       const arc = (2*Math.PI)/numbers.length;
-      const finalAngle = winnerIndex*arc;
-      const xFinal = center + Math.cos(-finalAngle + Math.PI/2) * radius;
-      const yFinal = center + Math.sin(-finalAngle + Math.PI/2) * radius;
-      ballIndicator.style.left = xFinal + 'px';
-      ballIndicator.style.top = yFinal + 'px';
+      rotation = 2*Math.PI - winnerIndex*arc;
+      drawWheel(rotation);
 
       // wynik
       let win=false;
@@ -124,7 +108,9 @@ spinBtn.addEventListener('click', ()=>{
       balanceEl.textContent=balance;
       currentBet=null;
     }
-  },20);
+  };
+
+  animate();
 });
 
 // początkowe rysowanie
