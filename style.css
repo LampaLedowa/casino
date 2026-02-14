@@ -162,3 +162,22 @@ button:active {
     height: 110px;
   }
 }
+/* ===== RULETKA ===== */
+
+.roulette-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.roulette-wheel {
+  font-size: 120px;
+  width: 160px;
+  height: 160px;
+  line-height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #111, #000);
+  box-shadow: 0 0 40px red, inset 0 0 30px gold;
+  transition: transform 3s cubic-bezier(.17,.67,.83,.67);
+  user-select: none;
+}
