@@ -9,7 +9,7 @@ const betBtns = document.querySelectorAll(".bet-btn");
 let balance = 1000;
 let currentBet = null;
 
-// Europejska ruletka (kolejność kolorów)
+// Kolejność numerów w europejskiej ruletce
 const numbers = [
 {num:0,color:'green'}, {num:32,color:'red'}, {num:15,color:'black'},
 {num:19,color:'red'}, {num:4,color:'black'}, {num:21,color:'red'},
@@ -32,7 +32,6 @@ function drawWheel(rotation=0){
   const center = 200;
   ctx.clearRect(0,0,400,400);
   const arc = (2*Math.PI)/numbers.length;
-
   numbers.forEach((n,i)=>{
     const start = i*arc + rotation;
     const end = start+arc;
@@ -57,7 +56,7 @@ function drawWheel(rotation=0){
   });
 }
 
-// Generowanie numerków na stole
+// Wypełnienie numerków na stole
 numbers.forEach(n=>{
   const btn = document.createElement("button");
   btn.textContent = n.num;
@@ -74,7 +73,6 @@ betBtns.forEach(btn=>{
 // Spin
 spinBtn.addEventListener('click', ()=>{
   if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
-  
   const winnerIndex = Math.floor(Math.random()*numbers.length);
   const winner = numbers[winnerIndex];
 
@@ -102,5 +100,5 @@ spinBtn.addEventListener('click', ()=>{
   },20);
 });
 
-// Początkowe rysowanie
+// Początkowe rysowanie koła
 drawWheel();
