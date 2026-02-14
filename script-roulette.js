@@ -10,7 +10,6 @@ const ball = document.getElementById("rouletteBall");
 let balance = 1000;
 let currentBet = null;
 
-// Kolejność europejskiej ruletki
 const numbers = [
 {num:0,color:'green'}, {num:32,color:'red'}, {num:15,color:'black'},
 {num:19,color:'red'}, {num:4,color:'black'}, {num:21,color:'red'},
@@ -27,7 +26,6 @@ const numbers = [
 {num:26,color:'black'}
 ];
 
-// Rysowanie koła
 function drawWheel(rotation=0){
   const radius = 180;
   const center = 200;
@@ -37,8 +35,6 @@ function drawWheel(rotation=0){
   numbers.forEach((n,i)=>{
     const start = i*arc + rotation;
     const end = start+arc;
-
-    // kolor segmentu
     ctx.beginPath();
     ctx.moveTo(center,center);
     ctx.arc(center,center,radius,start,end);
@@ -47,7 +43,6 @@ function drawWheel(rotation=0){
     ctx.strokeStyle="#fff";
     ctx.stroke();
 
-    // numer
     const angle = start + arc/2;
     ctx.save();
     ctx.translate(center,center);
@@ -60,7 +55,6 @@ function drawWheel(rotation=0){
   });
 }
 
-// Generowanie numerków na stole
 numbers.forEach(n=>{
   const btn = document.createElement("button");
   btn.textContent = n.num;
@@ -69,12 +63,10 @@ numbers.forEach(n=>{
   numbersGrid.appendChild(btn);
 });
 
-// Kolory
 betBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>currentBet=btn.dataset.bet);
 });
 
-// SPIN + animacja kulki
 spinBtn.addEventListener('click', ()=>{
   if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
 
@@ -89,8 +81,6 @@ spinBtn.addEventListener('click', ()=>{
 
   const animate = ()=>{
     drawWheel(rotation);
-
-    // obrót koła
     rotation += speed;
     speed -= deceleration;
 
@@ -109,15 +99,12 @@ spinBtn.addEventListener('click', ()=>{
       const arc = (2*Math.PI)/numbers.length;
       rotation = 2*Math.PI - winnerIndex*arc;
       drawWheel(rotation);
-
-      // kula na numerze
       const finalAngle = winnerIndex*arc;
       const ballX = center + Math.cos(-finalAngle + Math.PI/2) * radius;
       const ballY = center + Math.sin(-finalAngle + Math.PI/2) * radius;
       ball.style.left = ballX-10+'px';
       ball.style.top = ballY-10+'px';
 
-      // wynik
       let win=false;
       if(currentBet==='red' && winner.color==='red') win=true;
       else if(currentBet==='black' && winner.color==='black') win=true;
@@ -135,5 +122,4 @@ spinBtn.addEventListener('click', ()=>{
   animate();
 });
 
-// początkowe rysowanie
 drawWheel();
