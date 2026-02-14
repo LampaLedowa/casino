@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruletka - CoCoCasino</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruletka - TotalCasino Clone</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -13,18 +13,25 @@
   <header>
     <h1>Ruletka 🎡</h1>
     <a href="index.html" class="back-btn">⬅ Powrót</a>
+    <p>Saldo: $<span id="balance">1000</span></p>
   </header>
 
   <main>
 
-    <!-- KOŁO RULETKI -->
     <div class="roulette-wrapper">
-      <div class="roulette-wheel" id="wheel">
-        <div class="roulette-ball" id="ball"></div>
-        <!-- 37 pól numerów -->
-        <div class="numbers">
-          <!-- JS wygeneruje numerki -->
-        </div>
+      <canvas id="rouletteCanvas" width="400" height="400"></canvas>
+      <div id="ballIndicator"></div>
+    </div>
+
+    <div class="bet-options">
+      <p>Wybierz zakład:</p>
+      <div>
+        <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
+        <button class="bet-btn" data-bet="black">⚫ Czarne</button>
+        <button class="bet-btn" data-bet="green">🟢 Zielone</button>
+      </div>
+      <div class="numbers-grid" id="numbersGrid">
+        <!-- JS wypełni numerki 0-36 -->
       </div>
     </div>
 
@@ -32,11 +39,8 @@
     <p id="rouletteResult"></p>
 
   </main>
-
 </div>
 
-<audio id="rouletteSound" src="assets/sounds/spin.mp3"></audio>
-
-<script src="script-roulette.js"></script>
+<script src="roulette.js"></script>
 </body>
 </html>
