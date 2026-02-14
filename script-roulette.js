@@ -5,6 +5,7 @@ const result = document.getElementById("rouletteResult");
 const balanceEl = document.getElementById("balance");
 const numbersGrid = document.getElementById("numbersGrid");
 const betBtns = document.querySelectorAll(".bet-btn");
+const ballIndicator = document.getElementById("ballIndicator");
 
 let balance = 1000;
 let currentBet = null;
@@ -32,9 +33,12 @@ function drawWheel(rotation=0){
   const center = 200;
   ctx.clearRect(0,0,400,400);
   const arc = (2*Math.PI)/numbers.length;
+
   numbers.forEach((n,i)=>{
     const start = i*arc + rotation;
     const end = start+arc;
+
+    // sekcje kolorów
     ctx.beginPath();
     ctx.moveTo(center,center);
     ctx.arc(center,center,radius,start,end);
@@ -56,7 +60,7 @@ function drawWheel(rotation=0){
   });
 }
 
-// Wypełnienie numerków na stole
+// Generowanie numerków na stole
 numbers.forEach(n=>{
   const btn = document.createElement("button");
   btn.textContent = n.num;
@@ -70,21 +74,44 @@ betBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>currentBet=btn.dataset.bet);
 });
 
-// Spin
+// Spin z kulką
 spinBtn.addEventListener('click', ()=>{
   if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
+
   const winnerIndex = Math.floor(Math.random()*numbers.length);
   const winner = numbers[winnerIndex];
 
   let rotation = 0;
-  const steps = 100;
+  let ballAngle = 0;
+  const steps = 120;
   let count=0;
+
   const interval = setInterval(()=>{
-    rotation += 0.3+0.05*count;
+    rotation += 0.05 + 0.02*count; // obrót koła
+    ballAngle += 0.1 + 0.03*count; // kula porusza się szybciej
     drawWheel(rotation);
+
+    // pozycja kulki
+    const center = 200;
+    const radius = 160;
+    const x = center + Math.cos(-ballAngle + Math.PI/2) * radius;
+    const y = center + Math.sin(-ballAngle + Math.PI/2) * radius;
+    ballIndicator.style.left = x + 'px';
+    ballIndicator.style.top = y + 'px';
+
     count++;
     if(count>steps){
       clearInterval(interval);
+
+      // ustawienie kulki na wylosowany numer
+      const arc = (2*Math.PI)/numbers.length;
+      const finalAngle = winnerIndex*arc;
+      const xFinal = center + Math.cos(-finalAngle + Math.PI/2) * radius;
+      const yFinal = center + Math.sin(-finalAngle + Math.PI/2) * radius;
+      ballIndicator.style.left = xFinal + 'px';
+      ballIndicator.style.top = yFinal + 'px';
+
+      // wynik
       let win=false;
       if(currentBet==='red' && winner.color==='red') win=true;
       else if(currentBet==='black' && winner.color==='black') win=true;
@@ -100,5 +127,5 @@ spinBtn.addEventListener('click', ()=>{
   },20);
 });
 
-// Początkowe rysowanie
+// początkowe rysowanie
 drawWheel();
