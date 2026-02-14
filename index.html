@@ -10,7 +10,7 @@
 
 <div class="casino-container">
 
-  <!-- PASEK GRACZA -->
+  <!-- Pasek gracza -->
   <div class="player-bar">
     <span id="playerName">Gracz1</span> • Saldo: $<span id="balance">1000</span>
   </div>
