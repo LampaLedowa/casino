@@ -2,123 +2,111 @@ const canvas = document.getElementById("rouletteCanvas");
 const ctx = canvas.getContext("2d");
 const spinBtn = document.getElementById("rouletteSpin");
 const result = document.getElementById("rouletteResult");
-const balanceEl = document.getElementById("balance");
+const balanceEl = document.getElementById("playerBalance");
+const nameEl = document.getElementById("playerNameDisplay");
 const numbersGrid = document.getElementById("numbersGrid");
 const betBtns = document.querySelectorAll(".bet-btn");
-const ball = document.getElementById("rouletteBall");
 
-let balance = 1000;
-let currentBet = null;
+// Inicjalizacja gracza z localStorage
+let player = {
+  name: localStorage.getItem("playerName") || "Gracz",
+  balance: parseInt(localStorage.getItem("playerBalance")) || 1000
+};
+balanceEl.textContent = player.balance;
+nameEl.textContent = player.name;
 
-const numbers = [
-{num:0,color:'green'}, {num:32,color:'red'}, {num:15,color:'black'},
-{num:19,color:'red'}, {num:4,color:'black'}, {num:21,color:'red'},
-{num:2,color:'black'}, {num:25,color:'red'}, {num:17,color:'black'},
-{num:34,color:'red'}, {num:6,color:'black'}, {num:27,color:'red'},
-{num:13,color:'black'}, {num:36,color:'red'}, {num:11,color:'black'},
-{num:30,color:'red'}, {num:8,color:'black'}, {num:23,color:'red'},
-{num:10,color:'black'}, {num:5,color:'red'}, {num:24,color:'black'},
-{num:16,color:'red'}, {num:33,color:'black'}, {num:1,color:'red'},
-{num:20,color:'black'}, {num:14,color:'red'}, {num:31,color:'black'},
-{num:9,color:'red'}, {num:22,color:'black'}, {num:18,color:'red'},
-{num:29,color:'black'}, {num:7,color:'red'}, {num:28,color:'black'},
-{num:12,color:'red'}, {num:35,color:'black'}, {num:3,color:'red'},
-{num:26,color:'black'}
-];
-
-function drawWheel(rotation=0){
-  const radius = 180;
-  const center = 200;
-  ctx.clearRect(0,0,400,400);
-  const arc = (2*Math.PI)/numbers.length;
-
-  numbers.forEach((n,i)=>{
-    const start = i*arc + rotation;
-    const end = start+arc;
-    ctx.beginPath();
-    ctx.moveTo(center,center);
-    ctx.arc(center,center,radius,start,end);
-    ctx.fillStyle = n.color==='red'?'#c00':(n.color==='black'?'#000':'#0a5');
-    ctx.fill();
-    ctx.strokeStyle="#fff";
-    ctx.stroke();
-
-    const angle = start + arc/2;
-    ctx.save();
-    ctx.translate(center,center);
-    ctx.rotate(angle);
-    ctx.textAlign="right";
-    ctx.fillStyle="#fff";
-    ctx.font="16px Arial";
-    ctx.fillText(n.num,radius-20,5);
-    ctx.restore();
-  });
+// Funkcja aktualizacji salda
+function updateBalance(amount){
+  player.balance += amount;
+  balanceEl.textContent = player.balance;
+  localStorage.setItem("playerBalance", player.balance);
 }
 
-numbers.forEach(n=>{
+// Generowanie numerków 0-36
+const numbers = [];
+for(let i=0;i<=36;i++){ numbers.push(i); }
+
+numbers.forEach(num=>{
   const btn = document.createElement("button");
-  btn.textContent = n.num;
-  btn.classList.add(n.color);
-  btn.addEventListener('click', ()=>currentBet=n.num);
+  btn.classList.add("number-btn");
+  btn.textContent = num;
+  btn.dataset.number = num;
   numbersGrid.appendChild(btn);
 });
 
+let currentBet = { type:"", value:null };
+
+// Obsługa obstawiania kolorów
 betBtns.forEach(btn=>{
-  btn.addEventListener('click', ()=>currentBet=btn.dataset.bet);
+  btn.addEventListener("click",()=>{
+    currentBet.type = "color";
+    currentBet.value = btn.dataset.bet;
+    result.textContent = `Postawiono na: ${currentBet.value}`;
+  });
 });
 
-spinBtn.addEventListener('click', ()=>{
-  if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
+// Obsługa obstawiania numerów
+document.querySelectorAll(".number-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    currentBet.type = "number";
+    currentBet.value = parseInt(btn.dataset.number);
+    result.textContent = `Postawiono na numer: ${currentBet.value}`;
+  });
+});
 
-  const winnerIndex = Math.floor(Math.random()*numbers.length);
-  const winner = numbers[winnerIndex];
+// Rysowanie koła ruletki
+function drawRoulette(){
+  const radius = 200;
+  const colors = ["#ff0000","#000000"];
+  const startAngle = -Math.PI/2;
+  const angleStep = (2*Math.PI)/37;
 
-  let rotation = 0;
-  let speed = 0.3 + Math.random()*0.3;
-  const deceleration = 0.003 + Math.random()*0.002;
-  let ballAngle = Math.random()*2*Math.PI;
-  const ballSpeed = 0.1 + Math.random()*0.05;
+  for(let i=0;i<37;i++){
+    ctx.beginPath();
+    ctx.moveTo(radius,radius);
+    ctx.arc(radius,radius,radius,startAngle+i*angleStep,startAngle+(i+1)*angleStep);
+    if(i===0) ctx.fillStyle="#008000"; // zielony 0
+    else ctx.fillStyle = colors[i%2];
+    ctx.fill();
+    ctx.strokeStyle="#fff";
+    ctx.stroke();
+  }
+}
+drawRoulette();
 
-  const animate = ()=>{
-    drawWheel(rotation);
-    rotation += speed;
-    speed -= deceleration;
+// SPIN ruletki
+spinBtn.addEventListener("click", ()=>{
+  if(player.balance < 50){ alert("Nie masz środków!"); return; }
+  updateBalance(-50);
 
-    const radius = 160;
-    const center = 200;
-    ballAngle -= ballSpeed;
-    const x = center + Math.cos(ballAngle) * radius;
-    const y = center + Math.sin(ballAngle) * radius;
-    ball.style.left = x-10+'px';
-    ball.style.top = y-10+'px';
+  // losowy numer
+  const winningNumber = Math.floor(Math.random()*37);
+  let winningColor = winningNumber===0 ? "green" : (winningNumber%2===0 ? "black":"red");
 
-    if(speed>0){
-      requestAnimationFrame(animate);
-    } else {
-      const arc = (2*Math.PI)/numbers.length;
-      rotation = 2*Math.PI - winnerIndex*arc;
-      drawWheel(rotation);
-      const finalAngle = winnerIndex*arc;
-      const ballX = center + Math.cos(-finalAngle + Math.PI/2) * radius;
-      const ballY = center + Math.sin(-finalAngle + Math.PI/2) * radius;
-      ball.style.left = ballX-10+'px';
-      ball.style.top = ballY-10+'px';
+  // animacja kulki
+  let angle = 0;
+  const spinFrames = 50 + Math.floor(Math.random()*50);
+  let frame=0;
+  function animateBall(){
+    frame++;
+    angle += 0.3 + Math.random()*0.2;
+    const radius = 180;
+    const x = 200 + radius*Math.cos(angle);
+    const y = 200 + radius*Math.sin(angle);
+    const ball = document.getElementById("rouletteBall");
+    ball.style.left = (x-10)+"px";
+    ball.style.top = (y-10)+"px";
 
-      let win=false;
-      if(currentBet==='red' && winner.color==='red') win=true;
-      else if(currentBet==='black' && winner.color==='black') win=true;
-      else if(currentBet==='green' && winner.color==='green') win=true;
-      else if(currentBet===winner.num) win=true;
-
-      if(win){ balance+=100; result.textContent=`WYGRAŁEŚ! Numer: ${winner.num} — ${winner.color}`; }
-      else{ balance-=100; result.textContent=`PRZEGRAŁEŚ! Numer: ${winner.num} — ${winner.color}`; }
-
-      balanceEl.textContent=balance;
-      currentBet=null;
+    if(frame < spinFrames) requestAnimationFrame(animateBall);
+    else {
+      // wynik
+      let winAmount = 0;
+      if(currentBet.type==="color" && currentBet.value===winningColor) winAmount=100;
+      else if(currentBet.type==="number" && currentBet.value===winningNumber) winAmount=500;
+      result.textContent = `Wylosowano ${winningNumber} (${winningColor.toUpperCase()})` + (winAmount>0? " – WYGRAŁEŚ!":" – PRZEGRAŁEŚ!");
+      updateBalance(winAmount);
     }
-  };
-
-  animate();
+  }
+  animateBall();
 });
 
-drawWheel();
