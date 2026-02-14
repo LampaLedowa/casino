@@ -5,6 +5,7 @@ const result = document.getElementById("rouletteResult");
 const balanceEl = document.getElementById("balance");
 const numbersGrid = document.getElementById("numbersGrid");
 const betBtns = document.querySelectorAll(".bet-btn");
+const ball = document.getElementById("rouletteBall");
 
 let balance = 1000;
 let currentBet = null;
@@ -36,6 +37,8 @@ function drawWheel(rotation=0){
   numbers.forEach((n,i)=>{
     const start = i*arc + rotation;
     const end = start+arc;
+
+    // kolor segmentu
     ctx.beginPath();
     ctx.moveTo(center,center);
     ctx.arc(center,center,radius,start,end);
@@ -44,6 +47,7 @@ function drawWheel(rotation=0){
     ctx.strokeStyle="#fff";
     ctx.stroke();
 
+    // numer
     const angle = start + arc/2;
     ctx.save();
     ctx.translate(center,center);
@@ -70,7 +74,7 @@ betBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>currentBet=btn.dataset.bet);
 });
 
-// SPIN
+// SPIN + animacja kulki
 spinBtn.addEventListener('click', ()=>{
   if(currentBet===null){ alert("Wybierz numer lub kolor!"); return; }
 
@@ -80,11 +84,25 @@ spinBtn.addEventListener('click', ()=>{
   let rotation = 0;
   let speed = 0.3 + Math.random()*0.3;
   const deceleration = 0.003 + Math.random()*0.002;
+  let ballAngle = Math.random()*2*Math.PI;
+  const ballSpeed = 0.1 + Math.random()*0.05;
 
   const animate = ()=>{
     drawWheel(rotation);
+
+    // obrót koła
     rotation += speed;
     speed -= deceleration;
+
+    // kula
+    const radius = 160;
+    const center = 200;
+    ballAngle -= ballSpeed;
+    const x = center + Math.cos(ballAngle) * radius;
+    const y = center + Math.sin(ballAngle) * radius;
+    ball.style.left = x-10+'px';
+    ball.style.top = y-10+'px';
+
     if(speed>0){
       requestAnimationFrame(animate);
     } else {
@@ -92,6 +110,14 @@ spinBtn.addEventListener('click', ()=>{
       rotation = 2*Math.PI - winnerIndex*arc;
       drawWheel(rotation);
 
+      // kula na numerze
+      const finalAngle = winnerIndex*arc;
+      const ballX = center + Math.cos(-finalAngle + Math.PI/2) * radius;
+      const ballY = center + Math.sin(-finalAngle + Math.PI/2) * radius;
+      ball.style.left = ballX-10+'px';
+      ball.style.top = ballY-10+'px';
+
+      // wynik
       let win=false;
       if(currentBet==='red' && winner.color==='red') win=true;
       else if(currentBet==='black' && winner.color==='black') win=true;
