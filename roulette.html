@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruletka - TotalCasino Clone</title>
+<title>Ruletka</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,27 +17,23 @@
   </header>
 
   <main>
-
     <div class="roulette-wrapper">
       <canvas id="rouletteCanvas" width="400" height="400"></canvas>
-      <div id="ballIndicator"></div>
     </div>
 
     <div class="bet-options">
-      <p>Wybierz zakład:</p>
-      <div>
-        <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
-        <button class="bet-btn" data-bet="black">⚫ Czarne</button>
-        <button class="bet-btn" data-bet="green">🟢 Zielone</button>
-      </div>
-      <div class="numbers-grid" id="numbersGrid">
-        <!-- JS wypełni numerki 0-36 -->
-      </div>
+      <p>Obstaw kolory:</p>
+      <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
+      <button class="bet-btn" data-bet="black">⚫ Czarne</button>
+      <button class="bet-btn" data-bet="green">🟢 Zielone</button>
+    </div>
+
+    <div class="numbers-grid" id="numbersGrid">
+      <!-- JS wypełni numerki 0-36 -->
     </div>
 
     <button id="rouletteSpin">SPIN</button>
     <p id="rouletteResult"></p>
-
   </main>
 </div>
 
