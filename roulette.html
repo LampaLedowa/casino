@@ -3,35 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruletka - TotalCasino Clone</title>
+  <title>Ruletka - CoCoCasino</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="casino-container">
+<div class="casino-container">
 
-    <header>
-      <h1>Ruletka 🎡</h1>
-      <a href="index.html" class="back-btn">⬅ Powrót</a>
-    </header>
+  <header>
+    <h1>Ruletka 🎡</h1>
+    <a href="index.html" class="back-btn">⬅ Powrót</a>
+  </header>
 
-    <main>
+  <main>
 
-      <div class="roulette-wrapper">
-        <div class="roulette-wheel" id="wheel">
-          <div class="roulette-ball" id="ball"></div>
+    <!-- KOŁO RULETKI -->
+    <div class="roulette-wrapper">
+      <div class="roulette-wheel" id="wheel">
+        <div class="roulette-ball" id="ball"></div>
+        <!-- 37 pól numerów -->
+        <div class="numbers">
+          <!-- JS wygeneruje numerki -->
         </div>
       </div>
+    </div>
 
-      <button id="rouletteSpin">SPIN</button>
-      <p id="rouletteResult"></p>
+    <button id="rouletteSpin">SPIN</button>
+    <p id="rouletteResult"></p>
 
-    </main>
+  </main>
 
-  </div>
+</div>
 
-  <audio id="rouletteSound" src="assets/sounds/spin.mp3"></audio>
+<audio id="rouletteSound" src="assets/sounds/spin.mp3"></audio>
 
-  <script src="script-roulette.js"></script>
+<script src="script-roulette.js"></script>
 </body>
 </html>
