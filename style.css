@@ -1,3 +1,8 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -7,16 +12,39 @@ body, html {
   min-height: 100vh;
 }
 
+/* ===== KONTAINER ===== */
 .casino-container {
   text-align: center;
   background: rgba(0,0,0,0.85);
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 0 50px gold;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 20px auto;
 }
 
+/* ===== HEADER ===== */
+header h1 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+/* ===== PRZYCISK POWROTU ===== */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: gold;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  color: #fff;
+  text-shadow: 0 0 10px gold;
+}
+
+/* ===== MENU GIER ===== */
 .game-menu h2 {
   margin-bottom: 20px;
   color: gold;
@@ -26,6 +54,7 @@ body, html {
   display: flex;
   justify-content: center;
   gap: 50px;
+  flex-wrap: wrap;
 }
 
 .game-icons a {
@@ -39,33 +68,27 @@ body, html {
 }
 
 .game-icons img {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 15px;
-  box-shadow: 0 0 20px #ff0;
+  box-shadow: 0 0 25px gold;
 }
 
 .game-icons p {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 22px;
 }
+
+/* ===== SLOT MACHINE ===== */
 .slot-machine {
   display: flex;
   justify-content: center;
-  gap: 30px; /* większy odstęp między reelami */
+  gap: 30px;
   margin: 40px 0;
+  flex-wrap: wrap;
 }
 
-.reel {
-  font-size: 100px; /* większe symbole */
-  width: 120px;     /* większe pole */
-  height: 120px;
-  line-height: 120px;
-  background: #222;
-  border-radius: 15px;
-  box-shadow: 0 0 30px #ff0;
-  transition: transform 0.3s ease-in-out;
-}
+/* ===== POJEDYNCZY SLOT ===== */
 .reel {
   font-size: 100px;
   width: 120px;
@@ -74,10 +97,68 @@ body, html {
   background: #222;
   border-radius: 15px;
   box-shadow: 0 0 30px #ff0;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  user-select: none;
 }
 
-/* 👇 TU DODAJESZ */
+/* 🔥 NEON HOVER */
 .reel:hover {
   box-shadow: 0 0 50px gold, 0 0 20px red, 0 0 20px blue;
   transform: scale(1.1);
+}
+
+/* ===== ANIMACJA SPIN ===== */
+.spin-animation {
+  animation: spin 0.5s linear;
+}
+
+@keyframes spin {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(180deg); }
+  100% { transform: rotateX(360deg); }
+}
+
+/* ===== PRZYCISK SPIN ===== */
+button {
+  padding: 14px 28px;
+  font-size: 22px;
+  font-weight: bold;
+  background: linear-gradient(45deg, gold, orange);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px gold;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ===== TEKST WYNIKU ===== */
+#result, #rouletteResult {
+  font-size: 26px;
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 32px;
+}
+
+/* ===== RESPONSYWNOŚĆ ===== */
+@media (max-width: 600px) {
+  .reel {
+    font-size: 70px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+  }
+
+  .game-icons img {
+    width: 110px;
+    height: 110px;
+  }
+}
