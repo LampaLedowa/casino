@@ -3,19 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slots</title>
+<title>Slots 🎰</title>
 <link rel="stylesheet" href="style-slots.css">
 </head>
 <body>
+
 <div class="casino-container">
-  <header>
-    <h1>Slots 🎰</h1>
-    <a href="index.html" class="back-btn">⬅ Powrót</a>
-  </header>
-  <main>
-    <p>Tu będzie Twoja gra w slots – placeholder.</p>
-  </main>
+
+<header>
+  <h1>Slots 🎰</h1>
+  <a href="index.html" class="back-btn">⬅ Powrót</a>
+  <p>Saldo: $<span id="balance">1000</span></p>
+</header>
+
+<main>
+
+  <!-- Bębny -->
+  <div class="slots-wrapper">
+    <div class="reel" id="reel1">🍒</div>
+    <div class="reel" id="reel2">🍋</div>
+    <div class="reel" id="reel3">🔔</div>
+  </div>
+
+  <!-- Przycisk SPIN -->
+  <button id="slotsSpin">SPIN</button>
+  <p id="slotsResult"></p>
+
+</main>
+
 </div>
+
 <script src="slots.js"></script>
 </body>
 </html>
