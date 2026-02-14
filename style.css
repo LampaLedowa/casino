@@ -32,6 +32,17 @@ body {
   background: #222;
   border-radius: 10px;
   box-shadow: 0 0 20px #ff0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.spin-animation {
+  animation: spin 0.5s linear;
+}
+
+@keyframes spin {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(180deg); }
+  100% { transform: rotateX(360deg); }
 }
 
 button {
