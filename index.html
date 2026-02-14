@@ -7,7 +7,13 @@
 <link rel="stylesheet" href="style-main.css">
 </head>
 <body>
+
 <div class="casino-container">
+
+  <!-- PASEK GRACZA -->
+  <div class="player-bar">
+    <span id="playerName">Gracz1</span> • Saldo: $<span id="balance">1000</span>
+  </div>
 
   <header>
     <h1>TotalCasino 🎰</h1>
@@ -28,5 +34,6 @@
   </main>
 
 </div>
+
 </body>
 </html>
