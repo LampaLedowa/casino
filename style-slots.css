@@ -2,6 +2,21 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body, html { font-family: Arial; background: linear-gradient(135deg,#1a1a1a,#3a3a3a,#111); color:#fff; min-height:100vh; }
 
+/* PASEK GRACZA W PRAWYM GÓRNYM ROGU */
+.player-bar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: gold;
+  background: rgba(0,0,0,0.6);
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px gold;
+  z-index: 100;
+}
+
 /* KONTAINER */
 .casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
 
