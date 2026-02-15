@@ -43,17 +43,14 @@ body {
   border: none;
   cursor: pointer;
 }
-
-.login {
-  background: transparent;
-  border: 1px solid #ff7a00;
-  color: white;
-}
-
-.register {
-  background: linear-gradient(90deg, #ff7a00, #ff00c8);
-  color: white;
-}
+.player-bar {
+  font-size: 16px;
+  font-weight: bold;
+  color: gold;
+  background: rgba(0,0,0,0.6);
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gold;
 
 /* 🎰 HERO */
 .hero {
