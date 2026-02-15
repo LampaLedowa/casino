@@ -1,17 +1,165 @@
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
-body, html { font-family: Arial; background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); color:#fff; min-height: 100vh; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-/* KONTAINER */
-.casino-container { max-width:900px; margin:20px auto; padding:30px; background:rgba(0,0,0,0.85); border-radius:20px; text-align:center; box-shadow:0 0 50px gold; }
+body {
+  background: #0f1230;
+  color: white;
+}
 
-/* HEADER */
-header h1 { color: gold; margin-bottom:20px; }
+/* 🔝 NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: #151945;
+}
 
-/* MENU GIER */
-.game-menu h2 { margin-bottom:20px; color: gold; }
-.game-icons { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; }
-.game-icons a { text-decoration:none; color:#fff; transition: transform 0.3s; }
-.game-icons a:hover { transform: scale(1.1); }
-.game-icons img { width:140px; height:140px; border-radius:15px; box-shadow:0 0 25px gold; }
-.game-icons p { margin-top:10px; font-size:22px; }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: gold;
+}
+
+.menu a {
+  margin: 0 12px;
+  color: #cfd3ff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.menu a.active {
+  color: #7aa2ff;
+}
+
+.auth button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.login {
+  background: transparent;
+  border: 1px solid #ff7a00;
+  color: white;
+}
+
+.register {
+  background: linear-gradient(90deg, #ff7a00, #ff00c8);
+  color: white;
+}
+
+/* 🎰 HERO */
+.hero {
+  height: 320px;
+  background: linear-gradient(90deg, #151945, #2a2f6a);
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.hero-content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.primary {
+  margin-top: 15px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  background: white;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 🔎 FILTRY */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid #3a3f8f;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+
+.filters input {
+  padding: 10px 14px;
+  border-radius: 25px;
+  border: none;
+  margin-right: 10px;
+}
+
+.random {
+  background: #2ecc71;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  color: white;
+}
+
+/* 🎮 GRID */
+.games {
+  padding: 20px 40px 60px;
+}
+
+.games-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.game-card {
+  background: #1b1f55;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.game-card img {
+  width: 100%;
+  display: block;
+}
+
+.game-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,.4);
+}
+
+/* 🔻 FOOTER */
+.footer {
+  background: #070916;
+  padding: 50px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.store {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: transparent;
+  color: white;
+}
