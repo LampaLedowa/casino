@@ -10,33 +10,30 @@ body{
   color:#fff;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER PERFECT ===== */
 .header{
   position:sticky;
   top:0;
   z-index:1000;
-  display:flex;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
   align-items:center;
-  justify-content:space-between;
   padding:14px 42px;
   background:linear-gradient(180deg,#151945 0%, #0b0f2a 100%);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 
-.logo{
-  color:#f6c453;
-  font-weight:800;
-  font-size:26px;
-  letter-spacing:.3px;
-  white-space:nowrap;
+/* LEFT */
+.header-left{
+  justify-self:start;
 }
 
+/* CENTER */
 .nav{
   display:flex;
-  gap:22px;
-  align-items:center;
   justify-content:center;
-  flex:1;
+  align-items:center;
+  gap:22px;
 }
 
 .nav a{
@@ -54,18 +51,30 @@ body{
 .nav a.active::after{
   content:"";
   position:absolute;
-  left:0;right:0;bottom:-10px;
+  left:0;
+  right:0;
+  bottom:-10px;
   height:3px;
   border-radius:3px;
   background:linear-gradient(90deg,#6c7cff,#b86cff);
 }
 
-/* ===== AUTH ===== */
-.auth{
+/* RIGHT */
+.header-right{
   display:flex;
   gap:10px;
+  justify-self:end;
 }
 
+/* LOGO */
+.logo{
+  color:#f6c453;
+  font-weight:800;
+  font-size:26px;
+  letter-spacing:.3px;
+}
+
+/* BUTTONS */
 .btn-login{
   background:transparent;
   border:1px solid #ff7a00;
@@ -73,6 +82,7 @@ body{
   padding:8px 18px;
   border-radius:24px;
   font-weight:500;
+  cursor:pointer;
 }
 
 .btn-register{
@@ -82,9 +92,10 @@ body{
   padding:8px 20px;
   border-radius:24px;
   font-weight:600;
+  cursor:pointer;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
   height:360px;
   background:
@@ -120,109 +131,5 @@ body{
   padding:12px 28px;
   border-radius:28px;
   font-weight:700;
-}
-
-/* ===== TICKER ===== */
-.ticker{
-  background:#141843;
-  padding:14px 0;
-}
-
-.ticker-row{
-  display:flex;
-  gap:16px;
-  padding:0 40px;
-  overflow-x:auto;
-}
-
-.win{
-  background:#1b2055;
-  padding:10px 16px;
-  border-radius:12px;
-  white-space:nowrap;
-  font-size:14px;
-}
-
-/* ===== FILTERS ===== */
-.filters{
-  display:flex;
-  justify-content:space-between;
-  padding:26px 40px;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.pill{
-  background:transparent;
-  border:1px solid #3a3f8f;
-  color:#fff;
-  padding:10px 18px;
-  border-radius:26px;
-  font-size:13px;
-}
-
-.search{
-  padding:10px 16px;
-  border-radius:24px;
-  border:none;
-  margin-right:10px;
-  width:180px;
-}
-
-.btn-random{
-  background:#2ecc71;
-  border:none;
-  color:#fff;
-  padding:10px 20px;
-  border-radius:24px;
-  font-weight:600;
-}
-
-/* ===== GAMES ===== */
-.games{
-  padding:10px 40px 60px;
-}
-
-.games-header{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:18px;
-}
-
-.games-row{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  padding-bottom:6px;
-}
-
-.game{
-  min-width:160px;
-  background:#1a1f55;
-  border-radius:16px;
-  overflow:hidden;
-  position:relative;
-  transition:.25s;
   cursor:pointer;
-}
-
-.game:hover{
-  transform:translateY(-6px);
-}
-
-.game img{
-  width:100%;
-  display:block;
-}
-
-.badge{
-  position:absolute;
-  top:8px;
-  left:8px;
-  background:#ffb800;
-  color:#000;
-  font-size:11px;
-  padding:4px 9px;
-  border-radius:20px;
-  font-weight:700;
 }
