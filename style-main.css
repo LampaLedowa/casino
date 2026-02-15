@@ -1,165 +1,177 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Arial}
+body{background:#0b0f2a;color:#fff}
+
+/* HEADER */
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 40px;
+  background:linear-gradient(180deg,#141843,#0b0f2a);
+  border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-body {
-  background: #0f1230;
-  color: white;
+.logo{
+  color:#f4c542;
+  font-weight:800;
+  font-size:24px;
 }
 
-/* 🔝 NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 40px;
-  background: #151945;
+.nav a{
+  margin:0 14px;
+  color:#aab0ff;
+  text-decoration:none;
+  font-size:14px;
+  position:relative;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: gold;
+.nav a.active{
+  color:#fff;
 }
 
-.menu a {
-  margin: 0 12px;
-  color: #cfd3ff;
-  text-decoration: none;
-  font-size: 15px;
+.nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-8px;
+  height:3px;
+  border-radius:3px;
+  background:linear-gradient(90deg,#6c7cff,#b86cff);
 }
 
-.menu a.active {
-  color: #7aa2ff;
+/* BUTTONY */
+.btn-outline{
+  background:transparent;
+  border:1px solid #ff7a00;
+  color:#fff;
+  padding:8px 16px;
+  border-radius:30px;
 }
 
-.auth button {
-  margin-left: 10px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
+.btn-gradient{
+  background:linear-gradient(90deg,#ff7a00,#ff00c8);
+  border:none;
+  color:#fff;
+  padding:8px 18px;
+  border-radius:30px;
+  margin-left:8px;
 }
 
-.login {
-  background: transparent;
-  border: 1px solid #ff7a00;
-  color: white;
+/* HERO */
+.hero{
+  height:340px;
+  background:
+    linear-gradient(90deg,rgba(11,15,42,.9),rgba(11,15,42,.2)),
+    url("https://picsum.photos/1200/500?casino");
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  padding:40px;
 }
 
-.register {
-  background: linear-gradient(90deg, #ff7a00, #ff00c8);
-  color: white;
+.hero h1{font-size:34px;margin-bottom:10px}
+
+.btn-white{
+  margin-top:16px;
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:12px 26px;
+  border-radius:30px;
+  font-weight:700;
 }
 
-/* 🎰 HERO */
-.hero {
-  height: 320px;
-  background: linear-gradient(90deg, #151945, #2a2f6a);
-  display: flex;
-  align-items: center;
-  padding: 40px;
+/* TICKER */
+.ticker{
+  background:#141843;
+  overflow:hidden;
 }
 
-.hero-content h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+.ticker-track{
+  display:flex;
+  gap:30px;
+  padding:14px 40px;
 }
 
-.primary {
-  margin-top: 15px;
-  padding: 12px 26px;
-  border-radius: 30px;
-  border: none;
-  background: white;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
+.win{
+  background:#1b2055;
+  padding:10px 16px;
+  border-radius:12px;
+  white-space:nowrap;
 }
 
-/* 🔎 FILTRY */
-.filters {
-  display: flex;
-  justify-content: space-between;
-  padding: 25px 40px;
-  flex-wrap: wrap;
+/* FILTRY */
+.filters{
+  display:flex;
+  justify-content:space-between;
+  padding:26px 40px;
+  flex-wrap:wrap;
 }
 
-.filter-btn {
-  background: transparent;
-  border: 1px solid #3a3f8f;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 25px;
-  margin-right: 10px;
+.pill{
+  background:transparent;
+  border:1px solid #3a3f8f;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:30px;
+  margin-right:10px;
 }
 
-.filters input {
-  padding: 10px 14px;
-  border-radius: 25px;
-  border: none;
-  margin-right: 10px;
+.btn-green{
+  background:#2ecc71;
+  border:none;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:30px;
 }
 
-.random {
-  background: #2ecc71;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 25px;
-  color: white;
+/* GRY */
+.games{padding:10px 40px 60px}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:18px;
 }
 
-/* 🎮 GRID */
-.games {
-  padding: 20px 40px 60px;
+.games-row{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
 }
 
-.games-grid {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
+.game{
+  min-width:150px;
+  background:#1a1f55;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  transition:.25s;
 }
 
-.game-card {
-  background: #1b1f55;
-  border-radius: 14px;
-  overflow: hidden;
-  transition: 0.25s;
-  cursor: pointer;
+.game img{width:100%;display:block}
+
+.game:hover{
+  transform:translateY(-6px);
 }
 
-.game-card img {
-  width: 100%;
-  display: block;
+.jackpot{
+  position:absolute;
+  top:6px;
+  left:6px;
+  background:#ffb800;
+  color:#000;
+  font-size:11px;
+  padding:3px 8px;
+  border-radius:20px;
+  font-weight:700;
 }
 
-.game-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 10px 25px rgba(0,0,0,.4);
-}
-
-/* 🔻 FOOTER */
-.footer {
-  background: #070916;
-  padding: 50px 40px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-}
-
-.store {
-  display: block;
-  margin-top: 10px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 1px solid #444;
-  background: transparent;
-  color: white;
+.footer{
+  text-align:center;
+  padding:40px;
+  background:#070916;
+  color:#777;
 }
