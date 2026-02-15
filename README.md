@@ -3,71 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CoCoCasino 🎰</title>
-<link rel="stylesheet" href="style-global.css">
-<style>
-body { background: url('assets/images/menu-bg.jpg') no-repeat center center/cover; }
-main { padding: 50px; text-align: center; }
-.login-section, .deposit-section { margin:20px 0; }
-.login-section input, .deposit-section input { padding:8px 12px; margin-right:10px; border-radius:5px; border:none; }
-.login-section button, .deposit-section button { padding:8px 15px; border-radius:5px; border:none; background: gold; color:#000; font-weight:bold; cursor:pointer; transition:0.2s; }
-.login-section button:hover, .deposit-section button:hover { transform:scale(1.05); }
-</style>
+<title>TotalCasino Clone</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="casino-header">
-  <div class="casino-menu">
-    <a href="index.html">🏠 Menu</a>
-    <a href="slots.html">🎰 Slots</a>
-    <a href="roulette.html">🎡 Ruletka</a>
-  </div>
-  <div class="player-bar" id="playerBar">
-    <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
-  </div>
-</header>
+<div class="casino-container">
 
-<main>
-  <h1>Witaj w CoCoCasino!</h1>
+  <header>
+    <h1>TotalCasino Clone 🎰</h1>
+  </header>
 
-  <div class="login-section">
-    <label>Nazwa gracza:</label>
-    <input type="text" id="playerNameInput" placeholder="Twoja nazwa">
-    <button id="loginBtn">Zaloguj / Ustaw nazwę</button>
-  </div>
+  <main class="game-menu">
+    <h2>Wybierz grę:</h2>
+    <div class="game-icons">
+      <a href="slots.html">
+        <img src="./assets/images/slot-icon.png" alt="Slots">
+        <p>Slots</p>
+      </a>
+      <a href="roulette.html">
+        <img src="./assets/images/roulette-icon.png" alt="Ruletka">
+        <p>Ruletka</p>
+      </a>
+    </div>
+  </main>
 
-  <div class="deposit-section">
-    <label>Wpłać pieniądze:</label>
-    <input type="number" id="depositAmount" placeholder="Kwota">
-    <button id="depositBtn">Wpłać</button>
-  </div>
+</div>
 
-  <p>Po zalogowaniu możesz grać w Slots i Ruletkę. Saldo i nazwa będą widoczne wszędzie.</p>
-</main>
-
-<footer class="casino-footer"></footer>
-
-<script src="player.js"></script>
-<script>
-  document.getElementById("loginBtn").addEventListener("click", ()=>{
-    let name = document.getElementById("playerNameInput").value.trim();
-    if(name==="") name="Gracz";
-    localStorage.setItem("playerName", name);
-    location.reload();
-  });
-
-  document.getElementById("depositBtn").addEventListener("click", ()=>{
-    let amount = parseInt(document.getElementById("depositAmount").value);
-    if(!isNaN(amount) && amount>0){
-      if(window.updateBalance) updateBalance(amount);
-      alert(`Wpłacono $${amount}`);
-      document.getElementById("depositAmount").value="";
-    } else alert("Podaj poprawną kwotę");
-  });
-</script>
-</body>
-</html>
-
-</script>
 </body>
 </html>
