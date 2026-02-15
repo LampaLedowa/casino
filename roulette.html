@@ -3,76 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruletka 🎡</title>
-<link rel="stylesheet" href="style-global.css">
-<style>
-body { background: linear-gradient(135deg,#111,#1a1a3a,#000); }
-main { text-align:center; padding:50px; }
-.roulette-wrapper { margin:0 auto 20px; position:relative; width:400px; height:400px; }
-button { padding:10px 20px; margin:5px; font-size:16px; border:none; border-radius:5px; background: gold; color:#000; cursor:pointer; transition:0.2s; }
-button:hover { transform: scale(1.05); }
-.bet-options { margin-bottom:20px; }
-.numbers-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:5px; margin-bottom:20px; }
-.numbers-grid button { width:40px; height:40px; border-radius:5px; font-weight:bold; }
-</style>
+<title>Ruletka Realistyczna</title>
+<link rel="stylesheet" href="style-roulette.css">
 </head>
 <body>
 
-<header class="casino-header">
-  <div class="casino-menu">
-    <a href="index.html">🏠 Menu</a>
-    <a href="slots.html">🎰 Slots</a>
-    <a href="roulette.html">🎡 Ruletka</a>
-  </div>
-  <div class="player-bar" id="playerBar">
-    <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
-  </div>
+<div class="casino-container">
+
+<header>
+  <h1>Ruletka 🎡</h1>
+  <a href="index.html" class="back-btn">⬅ Powrót</a>
+  <p>Saldo: $<span id="balance">1000</span></p>
 </header>
 
 <main>
-  <h1>Ruletka 🎡</h1>
-  <div class="roulette-wrapper" id="rouletteWrapper">
-    <p>🎡 Ruletka działa w trybie uproszczonym</p>
+
+  <!-- KOŁO RULETKI -->
+  <div class="roulette-wrapper">
+    <canvas id="rouletteCanvas" width="400" height="400"></canvas>
   </div>
 
+  <!-- STOŁ OBSTAWIANIA KOLORÓW -->
   <div class="bet-options">
+    <p>Obstaw kolory:</p>
     <button class="bet-btn" data-bet="red">🔴 Czerwone</button>
     <button class="bet-btn" data-bet="black">⚫ Czarne</button>
     <button class="bet-btn" data-bet="green">🟢 Zielone</button>
   </div>
 
+  <!-- STOŁ OBSTAWIANIA NUMERÓW -->
   <div class="numbers-grid" id="numbersGrid"></div>
 
+  <!-- SPIN -->
   <button id="rouletteSpin">SPIN</button>
   <p id="rouletteResult"></p>
+
 </main>
 
-<footer class="casino-footer"></footer>
+</div>
 
-<script src="player.js"></script>
-<script>
-const numbersGrid = document.getElementById("numbersGrid");
-const rouletteResult = document.getElementById("rouletteResult");
-const rouletteSpin = document.getElementById("rouletteSpin");
-
-// Tworzymy numerki 0-36
-for(let i=0;i<=36;i++){
-  let btn = document.createElement("button");
-  btn.textContent = i;
-  btn.dataset.number = i;
-  btn.style.background = (i===0 ? "green" : i%2===0 ? "red":"black");
-  btn.style.color = "#fff";
-  numbersGrid.appendChild(btn);
-}
-
-rouletteSpin.addEventListener("click", ()=>{
-  if(player.balance<10){ alert("Masz za mało środków!"); return; }
-  updateBalance(-10);
-  let winningNumber = Math.floor(Math.random()*37);
-  let color = winningNumber===0 ? "green" : winningNumber%2===0 ? "red":"black";
-  updateBalance( winningNumber===0 ? 100 : 50); // wygrana uproszczona
-  rouletteResult.textContent = `Wynik: ${winningNumber} (${color})! Wygrana automatyczna.`;
-});
-</script>
+<script src="roulette.js"></script>
 </body>
 </html>
