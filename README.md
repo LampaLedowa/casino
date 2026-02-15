@@ -11,9 +11,7 @@
 <body>
 
 <header class="header">
-  <div class="header-left">
-    <div class="logo">TotalCasino</div>
-  </div>
+  <div class="logo">TotalCasino</div>
 
   <nav class="nav">
     <a class="active">Strona główna</a>
@@ -26,20 +24,11 @@
     <a>Graj odpowiedzialnie</a>
   </nav>
 
-  <div class="header-right">
+  <div class="auth">
     <button class="btn-login">Zaloguj się</button>
     <button class="btn-register">Zarejestruj się</button>
   </div>
 </header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <span class="hero-tag">#OFERTA POWITALNA</span>
-    <h1>Witaj w świecie Total Casino!</h1>
-    <p>Odbierz do 2500 zł i 150 Free Spins na start</p>
-    <button class="btn-cta">Sprawdź</button>
-  </div>
-</section>
 
 </body>
 </html>
