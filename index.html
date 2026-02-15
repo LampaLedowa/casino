@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CoCoCasino 🎰</title>
 <link rel="stylesheet" href="style-global.css">
+<style>
+body { background: url('assets/images/menu-bg.jpg') no-repeat center center/cover; }
+main { padding: 50px; text-align: center; }
+.login-section, .deposit-section { margin:20px 0; }
+.login-section input, .deposit-section input { padding:8px 12px; margin-right:10px; border-radius:5px; border:none; }
+.login-section button, .deposit-section button { padding:8px 15px; border-radius:5px; border:none; background: gold; color:#000; font-weight:bold; cursor:pointer; transition:0.2s; }
+.login-section button:hover, .deposit-section button:hover { transform:scale(1.05); }
+</style>
 </head>
 <body>
 
@@ -37,24 +45,15 @@
   <p>Po zalogowaniu możesz grać w Slots i Ruletkę. Saldo i nazwa będą widoczne wszędzie.</p>
 </main>
 
-<footer class="casino-footer">
-  <div class="social-icons">
-    <a href="https://discord.gg/twoj_link" target="_blank"><img src="assets/icons/discord.png" alt="Discord"></a>
-    <a href="https://instagram.com/twoj_profil" target="_blank"><img src="assets/icons/instagram.png" alt="Instagram"></a>
-    <a href="https://facebook.com/twoj_profil" target="_blank"><img src="assets/icons/facebook.png" alt="Facebook"></a>
-    <a href="https://youtube.com/twoj_kanal" target="_blank"><img src="assets/icons/youtube.png" alt="YouTube"></a>
-  </div>
-  <p>© 2026 CoCoCasino. Hazard związany jest z ryzykiem, a udział w nielegalnych grach hazardowych jest niezgodny z polskim prawem.</p>
-</footer>
+<footer class="casino-footer"></footer>
 
 <script src="player.js"></script>
 <script>
-  // Logowanie i wpłata
   document.getElementById("loginBtn").addEventListener("click", ()=>{
     let name = document.getElementById("playerNameInput").value.trim();
     if(name==="") name="Gracz";
     localStorage.setItem("playerName", name);
-    location.reload(); // odśwież, żeby pasek zaktualizował się wszędzie
+    location.reload();
   });
 
   document.getElementById("depositBtn").addEventListener("click", ()=>{
@@ -66,6 +65,5 @@
     } else alert("Podaj poprawną kwotę");
   });
 </script>
-
 </body>
 </html>
