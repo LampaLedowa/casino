@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ruletka 🎡</title>
 <link rel="stylesheet" href="style-global.css">
-<link rel="stylesheet" href="style-roulette.css">
+<style>
+body { background: linear-gradient(135deg,#111,#1a1a3a,#000); }
+main { text-align:center; padding:50px; }
+.roulette-wrapper { margin:0 auto 20px; position:relative; width:400px; height:400px; }
+button { padding:10px 20px; margin:5px; font-size:16px; border:none; border-radius:5px; background: gold; color:#000; cursor:pointer; transition:0.2s; }
+button:hover { transform: scale(1.05); }
+.bet-options { margin-bottom:20px; }
+.numbers-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:5px; margin-bottom:20px; }
+.numbers-grid button { width:40px; height:40px; border-radius:5px; font-weight:bold; }
+</style>
 </head>
 <body>
 
@@ -22,9 +31,8 @@
 
 <main>
   <h1>Ruletka 🎡</h1>
-  <div class="roulette-wrapper">
-    <canvas id="rouletteCanvas" width="400" height="400"></canvas>
-    <div id="rouletteBall"></div>
+  <div class="roulette-wrapper" id="rouletteWrapper">
+    <p>🎡 Ruletka działa w trybie uproszczonym</p>
   </div>
 
   <div class="bet-options">
@@ -39,17 +47,32 @@
   <p id="rouletteResult"></p>
 </main>
 
-<footer class="casino-footer">
-  <div class="social-icons">
-    <a href="https://discord.gg/twoj_link" target="_blank"><img src="assets/icons/discord.png" alt="Discord"></a>
-    <a href="https://instagram.com/twoj_profil" target="_blank"><img src="assets/icons/instagram.png" alt="Instagram"></a>
-    <a href="https://facebook.com/twoj_profil" target="_blank"><img src="assets/icons/facebook.png" alt="Facebook"></a>
-    <a href="https://youtube.com/twoj_kanal" target="_blank"><img src="assets/icons/youtube.png" alt="YouTube"></a>
-  </div>
-  <p>© 2026 CoCoCasino. Hazard związany jest z ryzykiem, a udział w nielegalnych grach hazardowych jest niezgodny z polskim prawem.</p>
-</footer>
+<footer class="casino-footer"></footer>
 
 <script src="player.js"></script>
-<script src="roulette.js"></script>
+<script>
+const numbersGrid = document.getElementById("numbersGrid");
+const rouletteResult = document.getElementById("rouletteResult");
+const rouletteSpin = document.getElementById("rouletteSpin");
+
+// Tworzymy numerki 0-36
+for(let i=0;i<=36;i++){
+  let btn = document.createElement("button");
+  btn.textContent = i;
+  btn.dataset.number = i;
+  btn.style.background = (i===0 ? "green" : i%2===0 ? "red":"black");
+  btn.style.color = "#fff";
+  numbersGrid.appendChild(btn);
+}
+
+rouletteSpin.addEventListener("click", ()=>{
+  if(player.balance<10){ alert("Masz za mało środków!"); return; }
+  updateBalance(-10);
+  let winningNumber = Math.floor(Math.random()*37);
+  let color = winningNumber===0 ? "green" : winningNumber%2===0 ? "red":"black";
+  updateBalance( winningNumber===0 ? 100 : 50); // wygrana uproszczona
+  rouletteResult.textContent = `Wynik: ${winningNumber} (${color})! Wygrana automatyczna.`;
+});
+</script>
 </body>
 </html>
