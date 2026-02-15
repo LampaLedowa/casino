@@ -19,13 +19,52 @@
       <a href="#">Turnieje</a>
       <a href="#">Pomoc</a>
     </nav>
+ </div>
+  <div class="player-bar" id="playerBar">
+    <span id="playerNameDisplay"></span> • Saldo: $<span id="playerBalance">0</span>
+  </div>
+</header>
 
-    <div class="auth">
-      <button class="login">Zaloguj się</button>
-      <button class="register">Zarejestruj się</button>
-    </div>
-  </header>
+<main>
+  <h1>Witaj w CoCoCasino!</h1>
 
+  <div class="login-section">
+    <label>Nazwa gracza:</label>
+    <input type="text" id="playerNameInput" placeholder="Twoja nazwa">
+    <button id="loginBtn">Zaloguj / Ustaw nazwę</button>
+  </div>
+
+  <div class="deposit-section">
+    <label>Wpłać pieniądze:</label>
+    <input type="number" id="depositAmount" placeholder="Kwota">
+    <button id="depositBtn">Wpłać</button>
+  </div>
+
+  <p>Po zalogowaniu możesz grać w Slots i Ruletkę. Saldo i nazwa będą widoczne wszędzie.</p>
+</main>
+
+<footer class="casino-footer"></footer>
+
+<script src="player.js"></script>
+<script>
+  document.getElementById("loginBtn").addEventListener("click", ()=>{
+    let name = document.getElementById("playerNameInput").value.trim();
+    if(name==="") name="Gracz";
+    localStorage.setItem("playerName", name);
+    location.reload();
+  });
+
+  document.getElementById("depositBtn").addEventListener("click", ()=>{
+    let amount = parseInt(document.getElementById("depositAmount").value);
+    if(!isNaN(amount) && amount>0){
+      if(window.updateBalance) updateBalance(amount);
+      alert(`Wpłacono $${amount}`);
+      document.getElementById("depositAmount").value="";
+    } else alert("Podaj poprawną kwotę");
+  });
+</script>
+</body>
+</html>
   <!-- 🎰 HERO -->
   <section class="hero">
     <div class="hero-content">
@@ -53,14 +92,14 @@
     <h2>Popularne</h2>
 
     <div class="games-grid">
-      <div class="game-card"><img src="https://picsum.photos/200/200?1"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?2"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?3"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?4"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?5"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?6"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?7"></div>
-      <div class="game-card"><img src="https://picsum.photos/200/200?8"></div>
+      <div class="game-card"><img src="https:///200/200?1"></div>
+      <div class="game-card"><img src="https:///200/200?2"></div>
+      <div class="game-card"><img src="https:///200/200?3"></div>
+      <div class="game-card"><img src="https:///200/200?4"></div>
+      <div class="game-card"><img src="https:///200/200?5"></div>
+      <div class="game-card"><img src="https:///200/200?6"></div>
+      <div class="game-card"><img src="https:///200/200?7"></div>
+      <div class="game-card"><img src="https:///200/200?8"></div>
     </div>
   </section>
 
