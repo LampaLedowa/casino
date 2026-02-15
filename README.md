@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TotalCasino</title>
-<link rel="stylesheet" href="styles.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- 🔝 HEADER -->
 <header class="header">
-  <div class="logo">TotalCasino</div>
+  <div class="header-left">
+    <div class="logo">TotalCasino</div>
+  </div>
 
   <nav class="nav">
     <a class="active">Strona główna</a>
@@ -24,13 +26,12 @@
     <a>Graj odpowiedzialnie</a>
   </nav>
 
-  <div class="auth">
+  <div class="header-right">
     <button class="btn-login">Zaloguj się</button>
     <button class="btn-register">Zarejestruj się</button>
   </div>
 </header>
 
-<!-- 🎰 HERO -->
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-tag">#OFERTA POWITALNA</span>
@@ -39,51 +40,6 @@
     <button class="btn-cta">Sprawdź</button>
   </div>
 </section>
-
-<!-- 🏆 TICKER -->
-<section class="ticker">
-  <div class="ticker-row">
-    <div class="win">D.S. wygrał <b>900,00 zł</b></div>
-    <div class="win">D.R. wygrał <b>420,00 zł</b></div>
-    <div class="win">T.B. wygrał <b>700,00 zł</b></div>
-    <div class="win">K.K. wygrał <b>640,00 zł</b></div>
-    <div class="win">A.S. wygrał <b>1 054 zł</b></div>
-  </div>
-</section>
-
-<!-- 🔎 FILTRY -->
-<section class="filters">
-  <div class="filters-left">
-    <button class="pill">KATEGORIE</button>
-    <button class="pill">WYBIERZ DOSTAWCĘ</button>
-  </div>
-
-  <div class="filters-right">
-    <input class="search" placeholder="Szukaj">
-    <button class="btn-random">Losowa gra</button>
-  </div>
-</section>
-
-<!-- 🎮 GRY -->
-<section class="games">
-  <div class="games-header">
-    <h2>🔥 Popularne</h2>
-    <span>Pokaż więcej</span>
-  </div>
-
-  <div class="games-row">
-    <div class="game"><span class="badge">Jackpot</span><img src="https://picsum.photos/200/200?1"></div>
-    <div class="game"><span class="badge">Jackpot</span><img src="https://picsum.photos/200/200?2"></div>
-    <div class="game"><span class="badge">Jackpot</span><img src="https://picsum.photos/200/200?3"></div>
-    <div class="game"><span class="badge">Jackpot</span><img src="https://picsum.photos/200/200?4"></div>
-    <div class="game"><span class="badge">Jackpot</span><img src="https://picsum.photos/200/200?5"></div>
-  </div>
-</section>
-
-</body>
-</html>
-
-</footer>
 
 </body>
 </html>
