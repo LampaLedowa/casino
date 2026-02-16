@@ -1,1 +1,12 @@
-
+:root {
+  --games-search-bg-color: #141436;
+  --warning-font-color: #000000;
+  --list-bg-color: #141436;
+  --cookies-regulation-button-accept-hover-border-color: #2ecc71;
+  --cookies-regulation-button-accept-hover-font-color: #ffffff;
+  --cookies-regulation-button-accept-hover-background-color: #2ecc71;
+  --cookies-regulation-button-accept-border-color: #5a7aff;
+  --cookies-regulation-button-accept-background-color: #5a7aff;
+  --cookies-regulation-message-font-color: #141436;
+  --cookies-regulation-message-background-color: #d4d4da
+}
